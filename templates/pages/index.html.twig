@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active carousel1">
+      <div class="carousel-caption d-md-block">
+        <h1>Cabinet de psychologie
+          <br> Emmanuelle Mir,
+        </h1>
+        <h4> Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC - EMDR
+          <br> A La Batie Neuve
+        </h4>
+      </div>
+    </div>
+    <div class="carousel-item carousel2">
+      <div class="carousel-caption d-md-block">
+        <h2> Spécialisée Neuropsychologie des troubles des apprentissages</h2>
+      </div>
+    </div>
+    <div class="carousel-item carousel3">
+      <div class="carousel-caption d-md-block">
+        <h2> Spécialisée en T.C.C <br>
+          Thérapie Comportementale et Cognitive</h2>
+      </div>
+    </div>
+    <div class="carousel-item  carousel4">
+      <div class="carousel-caption d-md-block">
+        <h2> Prise en charge, enfants, adultes et personnes âgées </h2>
+        <address>
+          MAISON DE SANTE, 133 rue des Ecoles, 05230 LA BATIE NEUVE
+        </address>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+
+<div class="home-organisme">
+  <h2>Organisme de formation <span>"Psycho-Parent-Alp"</span> <img src="{{ asset('assets/images/qualiopi.png') }}" alt="logo certification qualiopi" width="240"> </h2>
+</div>
+{% endblock %}

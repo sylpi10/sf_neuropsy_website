@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main class="formation-container" id="organisme-de-formation">
+  <div class="title-wrapper">
+    <h1> Organisme de formation</h1>
+    <img src="{{ asset('assets/images/formation/teaching.png') }}" alt="dessin d'élèves" width="260">
+  </div>
+
+  {% include 'partials/_organisme.html.twig' %}
+  {% include 'partials/_formations.html.twig' %}
+  {% include 'partials/_inscription.html.twig' %}
+  {% include 'partials/_conditions_de_ventes.html.twig' %}
+</main>
+{% endblock %}

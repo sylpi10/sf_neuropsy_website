@@ -1,0 +1,137 @@
+<div class="formations-wrapper" id="formations">
+  <div class="text-wrapper">
+    <h3>Les principaux champs d'expertise:</h3>
+
+    <div class="formation-texts">
+      <p>L’organisme de formation <b>« Psycho-Parent-Alp »</b> a pour mission principal de former les Parents afin de mieux comprendre les difficultés rencontrées par leurs enfants. Nous
+        proposons des formations qui fournissent des connaissances actualisées sur les diagnostics et des outils pratiques pour accompagner les familles au quotidien. Nous
+        intervenons dans le secteur du médico-social et de la petite enfance. </p>
+
+      <p> <b>Psycho-Parent-Alp</b> a pour mission de former les parents afin de mieux comprendre les difficultés rencontrées par leurs enfants. Nous proposons des formations qui
+        fournissent des connaissances actualisées sur les diagnostics et des outils pratiques pour accompagner les familles au quotidien. Notre approche est ancrée dans le secteur
+        médico-social et la petite enfance, et vise à soutenir le développement et l’accueil des enfants tout en offrant un accompagnement adapté aux parents, aux proches aidants
+        et aux familles. </p>
+
+      <img src="{{ asset('assets/images/qualiopi.png') }}" alt="logo certification qualiopi" width="240">
+    </div>
+
+    <hr>
+
+    <div class="formations-section">
+      <h3>Les formations:</h3>
+
+      <div class="formation-content">
+        <h4>FORMATIONS DESTINEES AUX PARENTS, AUX AIDANTS ET AUX FAMILLES</h4>
+        <div class="formations-cards-wrapper">
+          {% for formation in aidantFormations %}
+            {% set is_coming = not formation.status %}
+            {% set has_file = formation.fileName %}
+            {% set tag = has_file ? 'a' : 'div' %}
+            <{{ tag }}
+              class="formation-card{% if is_coming %} to-come{% endif %}"
+              {% if has_file %}href="{{ asset('uploads/formations/' ~ formation.fileName) }}" download{% endif %}
+            >
+              <h5> {{ formation.title }} </h5>
+              <div class="card-content">
+                <span class="duration"><i class="fas fa-clock"></i>{{ formation.duration }} jours </span>
+                <span class="duration"><i class="fas fa-calendar"></i>
+                  {% if formation.startsAt %}
+                    {{ formation.startsAt }}
+                  {% else %}
+                    A definir
+                  {% endif %}
+                </span>
+                {% if formation.priceIntra or formation.priceInter %}
+                  <span class="duration"><i class="fas fa-tag"></i>
+                    {% if formation.priceIntra and formation.priceInter %}
+                      INTRA: {{ formation.priceIntra }} <br> INTER: {{ formation.priceInter }}
+                    {% elseif formation.priceInter %}
+                      {{ formation.priceInter }}
+                    {% elseif formation.priceIntra %}
+                      {{ formation.priceIntra }}
+                    {% endif %}
+                  </span>
+                {% endif %}
+              </div>
+              {% if has_file %}<span class="download-icon"> <i class="fas fa-download"></i></span>{% endif %}
+            </{{ tag }}>
+          {% else %}
+            <p>Aucune formation disponible.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="formation-content">
+        <h4>FORMATIONS DESTINEES AUX PARENTS, AUX PROFESSIONNELS</h4>
+        <div class="formations-cards-wrapper">
+          {% for formation in proFormations %}
+            {% set is_coming = not formation.status %}
+            {% set has_file = formation.fileName %}
+            {% set tag = has_file ? 'a' : 'div' %}
+            <{{ tag }}
+              class="formation-card{% if is_coming %} to-come{% endif %}"
+              {% if has_file %}href="{{ asset('uploads/formations/' ~ formation.fileName) }}" download{% endif %}
+            >
+              <h5> {{ formation.title }} </h5>
+              <div class="card-content">
+                <span class="duration"><i class="fas fa-clock"></i>{{ formation.duration }} jours </span>
+                <span class="duration"><i class="fas fa-calendar"></i>
+                  {% if formation.startsAt %}
+                    {{ formation.startsAt }}
+                  {% else %}
+                    A definir
+                  {% endif %}
+                </span>
+                {% if formation.priceIntra or formation.priceInter %}
+                  <span class="duration"><i class="fas fa-tag"></i>
+                    {% if formation.priceIntra %}INTRA: {{ formation.priceIntra }}{% endif %}
+                    {% if formation.priceIntra and formation.priceInter %}<br>{% endif %}
+                    {% if formation.priceInter %}INTER: {{ formation.priceInter }}{% endif %}
+                  </span>
+                {% endif %}
+              </div>
+              {% if has_file %}<span class="download-icon"> <i class="fas fa-download"></i></span>{% endif %}
+            </{{ tag }}>
+          {% else %}
+            <p>Aucune formation disponible.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="text proposed-formations">
+      <div class="text-wrapper">
+        <h3>Les formations et interventions proposée</h3>
+        <div class="first-para">
+          <p class="para"> <b>Les formations collectives à destination des parents/proches aidants:</b> Ces formations sont ouvertes à tout parent ou proche aidant d’un enfant/adolescent/adulte en
+            situation de handicap ou présentant des particularités au quotidien en lien avec la thématique proposée et les prérequis. Elles se tiennent dans des salles de formations
+            adaptés au nombre de stagiaire accueillis, et aux formations proposées. Formation de partout en France. L’offre de formation est réactualisée tous les ans. Voir formations cidessus.
+            <br><br>
+            (Exemple à GAP : Salle du foyer jeunes travailleurs ou salle Havvah) ou dans d’autres villes.</p>
+          <img src="{{ asset('assets/images/formation/alps_pic3.jpg') }}" class="mountain-picture" alt="photo de montagne" width="500" height="260">
+        </div>
+
+        <p><b>Les formations collectives à destination des professionnels:</b> Ces formations sont ouvertes à tout professionnel du secteur médico-social, selon les thématiques et les pré-
+          requis. Elles se tiennent dans des salles de formations adaptés au nombre de stagiaire accueillis, et aux formations proposées. Formation de partout en France. L’offre de
+          formation est réactualisée tous les ans. Voir les formations ci-dessus</p>
+        <p>(Exemple à GAP : Salle du foyer jeunes travailleurs ou salle Havvah) ou dans d’autres villes</p>
+
+        <p>
+          <b>Les formations sur site:</b> Ces formations se tiennent dans vos locaux. Elles s’adressent à tout ou partie de l’équipe professionnelle, en fonction des thématiques choisies etdes pré-requis.
+          <br>
+          Ces formations s’appuient sur un réseau de formateurs·rices qualifié·es. <br>
+          Si vous avez identifié un besoin spécifique de formation ou que vous avez une idée ou un projet encore en réflexion, N’HESITEZ PAS, Contactez-nous pour que l’on étudie
+          ensemble vos besoins et vos attentes afin de construite une formation sur mesure. Partout en France.
+        </p>
+        <p> Ces formations ont lieu dans les salles mises à disposition par les institutions</p>
+        <p><b>Les analyses de la pratique professionnelle:</b> Rendues obligatoire pour toutes les crèches, et pertinente dans toutes les institutions, ces temps d’analyses des pratiques
+          professionnelles s'adressent à tous les membres de l'équipe. Ces séances sont animées par une professionnelle, psychologue, extérieure à la structure et sans lien
+          hiérarchique avec ses membres.</p>
+
+        <img src="{{ asset('assets/images/qualiopi.png') }}" alt="logo certification qualiopi" width="240">
+      </div>
+    </div>
+  </div>
+</div>

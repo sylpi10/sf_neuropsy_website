@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="1xsG3jwxALfLukgMmEtq0CITmIf-Ce3lbgR2Qm4fMdM" />
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Raleway&display=swap" rel="stylesheet">
+  <meta name="description" content="{{ meta_description|default('') }}" />
+  <meta name="name" content="{{ meta_name|default('') }}" />
+  <title>{% block title %}{{ title|default('Psy TCC') }}{% endblock %}</title>
+</head>
+<body>
+  <header id="top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{ path('app_home') }}"><img src="{{ asset('assets/images/brain.png') }}" alt="Logo" width="40"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ path('app_home') }}">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                EVALUATIONS NEUROPSYCHOLOGIQUES
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('app_neuropsy') }}">Définition</a>
+                <a class="dropdown-item" href="{{ path('app_neuropsy') }}#pour-qui">Pour qui ?</a>
+                <a class="dropdown-item" href="{{ path('app_neuropsy') }}#bilans">Les Bilans</a>
+                <a class="dropdown-item" href="{{ path('app_neuropsy') }}#deroulement">Le Déroulement</a>
+                <a class="dropdown-item" href="{{ path('app_neuropsy') }}#durée">La durée</a>
+                <a class="dropdown-item" href="{{ path('app_neuropsy') }}#remédiation-cognitive">La remédiation cognitive</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                LES TCC
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('app_tcc') }}#definition">Définition des T.C.C</a>
+                <a class="dropdown-item" href="{{ path('app_tcc') }}#les-techniques">Les Techniques</a>
+                <a class="dropdown-item" href="{{ path('app_tcc') }}#pour-qui">Pour qui ?</a>
+                <a class="dropdown-item" href="{{ path('app_tcc') }}#déroulement">Le Déroulement</a>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="{{ path('app_honoraires') }}">
+                HONORAIRES ET REMBOURSEMENT
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle formation-navlink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                SE FORMER
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('app_organisme_de_formation') }}#organisme-de-formation">Organisme de formation</a>
+                <a class="dropdown-item" href="{{ path('app_organisme_de_formation') }}#formations">Les formations</a>
+                <a class="dropdown-item" href="{{ path('app_organisme_de_formation') }}#inscriptions">Inscriptions</a>
+                <a class="dropdown-item" href="{{ path('app_organisme_de_formation') }}#conditions-generales">Informations pratiques</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_references') }}">REFERENCES</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_cabinet') }}">LE CABINET</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  {% block body %}{% endblock %}
+
+  {% set info = site_info() %}
+  <footer class="bg-dark text-white">
+    <div class="container foot">
+      <address class="infos footer-item">
+        <p>{{ info and info.title ? info.title : 'Emmanuelle Mir, Cabinet de psychologie' }}</p>
+        <p>
+          {{ info and info.addressLine1 ? info.addressLine1 : 'MAISON DE SANTE' }} <br>
+          {{ info and info.addressLine2 ? info.addressLine2 : '133 rue des Ecoles' }} <br>
+          {{ info and info.postalCodeCity ? info.postalCodeCity : '05230 LA BATIE NEUVE' }}
+        </p>
+      </address>
+      <img src="{{ asset('assets/images/qualiopi.png') }}" class="logo-qualiopi" alt="logo certification qualiopi" width="240">
+      <div class="rdv footer-item">
+        <h4>Pour prendre rendez-vous:</h4>
+        <ul>
+          <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:{{ info and info.phone ? info.phone|replace({'.': ''}) : '0650576015' }}" title="Téléphone">{{ info and info.phone ? info.phone : '06.50.57.60.15' }}</a></li>
+          <li><i class="fa fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}" title="E-mail">{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright d-flex justify-content-center align-items-center border-top p-1">Copyright &copy; 2020-{{ 'now'|date('Y') }} - <a href="https://sylvainpillet.com">S. Pillet</a></p>
+  </footer>
+  <script src="{{ asset('assets/js/jquery.js') }}"></script>
+  <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+.references-hero {
+  background-image: url("../images/graduation.jpg");
+  height: 100vh;
+  background-attachment: fixed;
+  flex-direction: column;
+  overflow-y: scroll;
+  font-size: 1.3rem;
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+    text-transform: uppercase;
+  }
+  .diplomas {
+    background-color: rgba(255, 255, 255, 0.94);
+    margin-top: 60px;
+    padding: 60px;
+    width: 100%;
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+    }
+    h4, h3{
+      color: #0e1d49;
+      width: fit-content;
+    }
+
+    .diplomas-list{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: stretch;
+      .diploma-item{
+        //border: solid 1px #cab406;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 20px;
+        border-radius: 4px;
+        width: 300px;
+        z-index: 4;
+
+        &::before{
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          z-index: -1;
+          background: #f00;
+          transform: skew(1.6deg, 1.6deg);
+          background: linear-gradient(to right, rgba(202, 180, 6, .7), rgba(202, 180, 6, .6));
+        }
+
+        @media screen and (min-width: 768px) {
+          width: 40%;
+        }
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+        span{
+          position: relative;
+          color: #333;
+          font-size: 1.2rem;
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+          margin-top: auto;
+        }
+        i {
+          margin-right: 6px;
+          font-size: 1.4rem;
+        }
+
+      }
+
+      hr{
+        margin-bottom: 0;
+      }
+
+    }
+
+    .experience-item{
+      border: solid 1px #cab406;
+      transform: skew(1.6deg, 1.6deg);
+      padding: 20px;
+      margin-bottom: 20px;
+      @media screen and (min-width: 768px) {
+        width: 70%;
+      }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+      .content{
+        transform: skew(-1.6deg, -1.6deg);
+      }
+    }
+
+  }
+  ul {
+    list-style-type: square;
+  }
+  hr {
+    margin-bottom: 40px;
+  }
+}

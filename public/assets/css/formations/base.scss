@@ -1,0 +1,125 @@
+body, html{
+  padding: 0;
+  margin: 0;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.formation-container {
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .title-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    flex-wrap: wrap;
+    background: url("../../images/formation/alps_pic.jpg") no-repeat center;
+    background-size: cover;
+  }
+
+  .text-wrapper{
+    @media screen and (min-width: 768px) {
+      padding: 30px 80px;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+    }
+    @media screen and (max-width: 460px) {
+      padding: 0 12px;
+    }
+  }
+
+  h3, i{
+    color: #cab406;
+  }
+
+  hr {
+    border-color: #cab406;
+  }
+
+  .download-link{
+    text-decoration: none;
+    padding: 6px 20px;
+    background-color: #cab406;
+    color: #0e1d49;
+    border: solid 1px #cab406;
+    font-weight: bold;
+    transition: background-color .3s ease;
+    min-width: fit-content;
+    white-space: nowrap;
+    i{
+      color: #0e1d49;
+    }
+    &:hover{
+      background-color: transparent;
+      color: #0e1d49;
+      border: solid 1px #0e1d49;
+    }
+  }
+
+  .inscription-wrapper{
+    background-color: rgba(202, 180, 6, .1);
+    .parcours-wrapper{
+      margin-top: 40px;
+      h3{
+        color: #cab406;
+      }
+      h4{
+        text-transform: uppercase;
+        text-align: center;
+        background-color: #0e1d49;
+        color: #fff;
+        padding: 4px;
+      }
+    }
+  }
+  .conditions-wrapper{
+    .formations-places{
+      margin-top: 60px;
+      .text-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        @media screen and (max-width: 900px) {
+          flex-direction: column;
+        }
+        .text, img{
+            width: 50%;
+          @media screen and (max-width: 900px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+    h4, h5{
+      color: #0e1d49;
+    }
+  }
+}
+
+.conditions-wrapper{
+  h3{
+    margin-bottom: 20px;
+  }
+  h5{
+    color: #0e1d49;
+    padding-top: 10px;
+  }
+  .text{
+    padding-bottom: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+  }
+  .signature{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@import "formations.scss";
+@import "organisme.scss";

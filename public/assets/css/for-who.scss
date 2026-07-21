@@ -1,0 +1,44 @@
+.tilesWrap {
+  padding: 0;
+  margin: 0px auto;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.tilesWrap li {
+  display: inline-block;
+  width: 20%;
+  min-width: 200px;
+  max-width: 230px;
+  padding: 10px;
+  position: relative;
+  vertical-align: center;
+  margin: 6px;
+  font-family: "helvetica", "sans-serif";
+  background: #fff;
+  text-align: center;
+}
+
+.tilesWrap li p {
+  font-size: 1.1rem;
+  line-height: 20px;
+  color: #333;
+  margin-top: 20px;
+  width: 96% !important;
+}
+
+.tilesWrap li:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: #f00;
+  transform: skew(1.4deg, 1.4deg);
+  background: linear-gradient(to right, #0abfbc, #165756);
+}

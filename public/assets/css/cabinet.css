@@ -1,0 +1,66 @@
+.cabinet-hero {
+  height: 60vh;
+  background: url("../images/cabinet.jpg") no-repeat center;
+}
+
+.cabinet .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 120px auto;
+  font-size: 1.4rem;
+}
+.cabinet .container .address-wrap {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 12px;
+  min-width: 400px;
+}
+.cabinet .container .address-wrap .address {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.cabinet .container .address-wrap i {
+  font-size: 3rem;
+}
+.cabinet .container .consult {
+  min-width: 400px;
+  width: 40%;
+}
+.cabinet .container .consult ul {
+  list-style-type: square;
+}
+
+.maps {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px;
+}
+.maps .frame {
+  width: 50%;
+}
+.maps .rdv {
+  width: 43%;
+  text-align: left;
+}
+.maps .rdv ul {
+  list-style-type: none;
+  margin-top: 40px;
+  margin-left: -30px;
+}
+.maps .rdv li {
+  margin-top: 30px;
+}
+.maps .rdv li i,
+.maps .rdv li a {
+  color: rgb(15, 76, 100);
+}
+
+/*# sourceMappingURL=cabinet.css.map */

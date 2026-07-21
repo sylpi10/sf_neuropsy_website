@@ -1,0 +1,92 @@
+.cabinet-hero {
+  height: 60vh;
+  background: url("../images/cabinet.jpg") no-repeat center;
+}
+.cabinet .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 120px auto;
+  font-size: 1.4rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin: 40px auto;
+    align-items: center;
+  }
+  .address-wrap {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 12px;
+    min-width: 400px;
+    .address {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    i {
+      font-size: 3rem;
+    }
+  }
+
+  .consult {
+    min-width: 400px;
+    width: 40%;
+    ul {
+      list-style-type: square;
+    }
+  }
+}
+
+.maps {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px;
+  .frame {
+    width: 50%;
+  }
+  .rdv {
+    width: 43%;
+    text-align: left;
+    ul {
+      list-style-type: none;
+      margin-top: 40px;
+      margin-left: -30px;
+    }
+    li {
+      margin-top: 30px;
+      i,
+      a {
+        color: rgb(15, 76, 100);
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+ .maps{
+   flex-direction: column;
+   align-items: center;
+ }
+  .maps, .frame{
+    width: 100% !important;
+  }
+  .maps .rdv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul{
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+  }
+}
