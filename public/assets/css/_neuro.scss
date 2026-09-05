@@ -1,199 +1,199 @@
 .anchor-offset {
-  display: block;
-  position: relative;
-  top: calc(-1 * var(--header-height));
-  visibility: hidden;
+    display: block;
+    position: relative;
+    top: calc(-1 * var(--header-height));
+    visibility: hidden;
 }
 
 .category-description {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 70px 24px 20px;
-  font-size: 1.1rem;
-  color: var(--slate-light);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 70px 24px 20px;
+    font-size: 1.1rem;
+    color: var(--slate-light);
 
-  @media (max-width: 768px) {
-    padding: 40px 20px 10px;
-  }
+    @media (max-width: 768px) {
+        padding: 40px 20px 10px;
+    }
 }
 
 .neuropsy {
-  color: var(--slate);
+    color: var(--slate);
 
-  .neuro-section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 70px 0;
-
-    &:nth-child(even) {
-      background: var(--sage-50);
-    }
-
-    h2.section-tag {
-      position: absolute;
-      margin-top: -34px;
-    }
-
-    .img {
-      width: 50%;
-      min-width: 380px;
-      height: 60vh;
-      min-height: 340px;
-      background-size: cover;
-      background-position: center;
-      border-radius: var(--radius-lg);
-      flex: 1 1 460px;
-      margin: 0 20px;
-    }
-
-    .text {
-      width: 50%;
-      min-width: 380px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex: 1 1 460px;
-      padding: 30px;
-
-      h3 {
-        color: var(--sage-700);
-        width: 100%;
-        text-align: center;
-      }
-      p {
-        color: var(--slate-light);
-      }
-      ol li {
-        font-size: 1.05rem;
-        margin: 18px;
-      }
-    }
-  }
-
-  .neuro-who {
-    flex-wrap: wrap-reverse;
-
-    .who > ul.tilesWrap {
-      width: 100%;
-    }
-  }
-
-  .neuro-bilan {
-    .wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .text h3 {
-      max-width: 640px;
-      margin: 0 auto 30px;
-      font-size: 1.25rem !important;
-      text-align: center;
-    }
-  }
-
-  .bilans {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    p {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      border-left: 4px solid var(--terracotta-500);
-      padding: 18px 24px;
-      margin: 0;
-      font-size: 1rem;
-      counter-increment: section;
-      position: relative;
-      padding-left: 56px;
-
-      &::before {
-        content: counter(section);
-        position: absolute;
-        left: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: var(--radius-full);
-        height: 1.7em;
-        width: 1.7em;
+    .neuro-section {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        background: var(--sage-600);
-        color: var(--white);
-        font-size: 0.85em;
-      }
+        gap: 0;
+        padding: 70px 0;
+
+        &:nth-child(even) {
+            background: var(--sage-50);
+        }
+
+        // h2.section-tag {
+        //   position: absolute;
+        //   margin-top: -34px;
+        // }
+
+        .img {
+            width: 50%;
+            min-width: 380px;
+            height: 60vh;
+            min-height: 340px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius-lg);
+            flex: 1 1 460px;
+            margin: 0 20px;
+        }
+
+        .text {
+            width: 50%;
+            min-width: 380px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex: 1 1 460px;
+            padding: 30px;
+
+            h3 {
+                color: var(--sage-700);
+                width: 100%;
+                text-align: center;
+            }
+            p {
+                color: var(--slate-light);
+            }
+            ol li {
+                font-size: 1.05rem;
+                margin: 18px;
+            }
+        }
     }
-  }
 
-  .neuro-deroulement {
-    justify-content: center;
-    flex-wrap: wrap-reverse;
-  }
+    .neuro-who {
+        flex-wrap: wrap-reverse;
 
-  .neuro-duration {
-    display: flex;
-    justify-content: center;
-
-    .text p {
-      color: var(--slate-light);
+        .who > ul.tilesWrap {
+            width: 100%;
+        }
     }
-  }
 
-  .neuro-remediation {
-    display: flex;
-    flex-wrap: wrap-reverse;
-    padding: 70px 0;
-    background: var(--sage-50);
+    .neuro-bilan {
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .text h3 {
+            max-width: 640px;
+            margin: 0 auto 30px;
+            font-size: 1.25rem !important;
+            text-align: center;
+        }
+    }
 
-    .img {
-      width: 50%;
-      min-width: 380px;
-      flex: 1 1 460px;
+    .bilans {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        p {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--terracotta-500);
+            padding: 18px 24px;
+            margin: 0;
+            font-size: 1rem;
+            counter-increment: section;
+            position: relative;
+            padding-left: 56px;
+
+            &::before {
+                content: counter(section);
+                position: absolute;
+                left: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: var(--radius-full);
+                height: 1.7em;
+                width: 1.7em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--sage-600);
+                color: var(--white);
+                font-size: 0.85em;
+            }
+        }
     }
-    .text p {
-      padding: 6px 0;
-      color: var(--slate-light);
+
+    .neuro-deroulement {
+        justify-content: center;
+        flex-wrap: wrap-reverse;
     }
-  }
+
+    .neuro-duration {
+        display: flex;
+        justify-content: center;
+
+        .text p {
+            color: var(--slate-light);
+        }
+    }
+
+    .neuro-remediation {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        padding: 70px 0;
+        background: var(--sage-50);
+
+        .img {
+            width: 50%;
+            min-width: 380px;
+            flex: 1 1 460px;
+        }
+        .text p {
+            padding: 6px 0;
+            color: var(--slate-light);
+        }
+    }
 }
 
 .neuro-who .img {
-  background-image: url("../images/neuro/for-who.jpg");
+    background-image: url("../images/neuro/for-who.jpg");
 }
 .neuro-bilan .img {
-  background-image: url("../images/neuro/bilan.jpg");
+    background-image: url("../images/neuro/bilan.jpg");
 }
 .neuro-deroulement .img {
-  background-image: url("../images/neuro/deroulement.png");
+    background-image: url("../images/neuro/deroulement.png");
 }
 .neuro-duration .img {
-  background-image: url("../images/neuro/duration.jpg");
+    background-image: url("../images/neuro/duration.jpg");
 }
 .neuro-remediation .img {
-  background-image: url("../images/neuro/emma8.png");
+    background-image: url("../images/neuro/emma8.png");
 }
 
 @media (max-width: 760px) {
-  .neuropsy .neuro-section {
-    padding: 46px 0;
+    .neuropsy .neuro-section {
+        padding: 46px 0;
 
-    .img,
-    .text {
-      width: 100%;
-      min-width: unset;
+        .img,
+        .text {
+            width: 100%;
+            min-width: unset;
+        }
+        .text {
+            margin-top: 20px;
+            padding: 20px;
+        }
     }
-    .text {
-      margin-top: 20px;
-      padding: 20px;
-    }
-  }
 }

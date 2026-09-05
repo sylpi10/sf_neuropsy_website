@@ -11,3 +11,8 @@
 /vendor/
 .htaccess
 ###< symfony/framework-bundle ###
+
+###> front-end (sass) ###
+/node_modules/
+/public/assets/css/*.css.map
+###< front-end (sass) ###

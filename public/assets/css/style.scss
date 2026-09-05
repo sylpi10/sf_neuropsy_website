@@ -2,35 +2,35 @@
    Design tokens
    ========================================================================== */
 :root {
-  --ivory: #faf7f1;
-  --ivory-dark: #f2ede1;
-  --sage-50: #eef2e9;
-  --sage-100: #dee8d3;
-  --sage-300: #b7cca7;
-  --sage-500: #86a473;
-  --sage-600: #6c8a5a;
-  --sage-700: #526b43;
-  --terracotta-100: #f8e2cd;
-  --terracotta-300: #edb994;
-  --terracotta-500: #dd8e63;
-  --terracotta-600: #c06f46;
-  --slate: #3f453b;
-  --slate-light: #767c6e;
-  --white: #ffffff;
+    --ivory: #faf7f1;
+    --ivory-dark: #f2ede1;
+    --sage-50: #eef2e9;
+    --sage-100: #dee8d3;
+    --sage-300: #b7cca7;
+    --sage-500: #86a473;
+    --sage-600: #6c8a5a;
+    --sage-700: #526b43;
+    --terracotta-100: #f8e2cd;
+    --terracotta-300: #edb994;
+    --terracotta-500: #dd8e63;
+    --terracotta-600: #c06f46;
+    --slate: #3f453b;
+    --slate-light: #767c6e;
+    --white: #ffffff;
 
-  --radius-sm: 10px;
-  --radius-md: 18px;
-  --radius-lg: 30px;
-  --radius-full: 999px;
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 30px;
+    --radius-full: 999px;
 
-  --shadow-soft: 0 14px 34px -18px rgba(63, 69, 59, 0.35);
-  --shadow-soft-lg: 0 26px 54px -20px rgba(63, 69, 59, 0.32);
+    --shadow-soft: 0 14px 34px -18px rgba(63, 69, 59, 0.35);
+    --shadow-soft-lg: 0 26px 54px -20px rgba(63, 69, 59, 0.32);
 
-  --font-display: "Fraunces", "Georgia", serif;
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-display: "Fraunces", "Georgia", serif;
+    --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
 
-  --container-width: 1180px;
-  --header-height: 84px;
+    --container-width: 1180px;
+    --header-height: 84px;
 }
 
 /* ==========================================================================
@@ -39,38 +39,38 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background-color: var(--ivory);
-  color: var(--slate);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+    background-color: var(--ivory);
+    color: var(--slate);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
 }
 
 img {
-  max-width: 100%;
-  display: block;
+    max-width: 100%;
+    display: block;
 }
 
 a {
-  color: var(--sage-700);
-  text-decoration: none;
+    color: var(--sage-700);
+    text-decoration: none;
 }
 
 hr {
-  border: none;
-  border-top: 1px solid var(--sage-100);
-  margin: 32px 0;
+    border: none;
+    border-top: 1px solid var(--sage-100);
+    margin: 32px 0;
 }
 
 h1,
@@ -79,95 +79,108 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--slate);
-  line-height: 1.2;
-  margin: 0 0 0.6em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--slate);
+    line-height: 1.2;
+    margin: 0 0 0.6em;
 }
 
 p {
-  margin: 0 0 1em;
+    margin: 0 0 1em;
 }
 
 ul {
-  margin: 0;
+    margin: 0;
 }
 
 .container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 24px;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 .skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  background: var(--sage-700);
-  color: var(--white);
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  z-index: 1000;
+    position: absolute;
+    left: -999px;
+    top: auto;
+    background: var(--sage-700);
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    z-index: 1000;
 }
 .skip-link:focus {
-  left: 16px;
-  top: 16px;
+    left: 16px;
+    top: 16px;
+}
+
+section.neuro-section,
+section.tcc-section {
+    box-shadow:
+        rgba(17, 17, 26, 0.05) 0px 4px 16px,
+        rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    position: relative;
+    .section-tag {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+    }
 }
 
 .section-tag {
-  display: inline-flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--white);
-  background: var(--sage-600);
-  padding: 8px 22px;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-soft);
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--sage-600);
+    padding: 8px 22px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-soft);
 }
 
 .has-shadow {
-  box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-soft);
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 12px 26px;
-  border-radius: var(--radius-full);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 26px;
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
 }
 .btn-primary {
-  background: var(--sage-600);
-  color: var(--white);
+    background: var(--sage-600);
+    color: var(--white);
 }
 .btn-primary:hover {
-  background: var(--sage-700);
+    background: var(--sage-700);
 }
 .btn-outline {
-  background: transparent;
-  border-color: var(--sage-600);
-  color: var(--sage-700);
+    background: transparent;
+    border-color: var(--sage-600);
+    color: var(--sage-700);
 }
 .btn-outline:hover {
-  background: var(--sage-50);
+    background: var(--sage-50);
 }
 
 main {
-  padding-top: var(--header-height);
+    padding-top: var(--header-height);
 }
 
 @import "header";

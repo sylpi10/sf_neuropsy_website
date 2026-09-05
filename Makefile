@@ -19,7 +19,7 @@ RSYNC_EXCLUDES = \
 	--exclude .env.deploy \
 	--exclude var/ \
 	--exclude Makefile \
-	--exclude docke/*
+	--exclude docke/* \
 	--exclude tests/ \
 	--exclude public/bundles/
 
@@ -60,7 +60,16 @@ migrations:
 	docker compose exec php php bin/console doctrine:migrations:migrate
 
 fixtures:
-    docker compose exec php php bin/console doctrine:fixtures:load
+	docker compose exec php php bin/console doctrine:fixtures:load
 
 logs:
 	docker compose logs -f
+
+sass-install:
+	npm install
+
+sass-watch:
+	npm run sass:watch
+
+sass-build:
+	npm run sass:build

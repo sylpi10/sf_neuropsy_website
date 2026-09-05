@@ -114,6 +114,18 @@ ul {
   top: 16px;
 }
 
+section.neuro-section,
+section.tcc-section {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  position: relative;
+}
+section.neuro-section .section-tag,
+section.tcc-section .section-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+
 .section-tag {
   display: inline-flex;
   align-items: center;
@@ -429,19 +441,19 @@ main {
 }
 
 .hero-slide--1 {
-  background-image: url("../images/ttc/hero.jpg");
+  background-image: url("../images/tcc/hero.jpg");
 }
 
 .hero-slide--2 {
-  background-image: url("../images/ttc/girl.jpg");
+  background-image: url("../images/tcc/girl.jpg");
 }
 
 .hero-slide--3 {
-  background-image: url("../images/ttc/unhappy.jpg");
+  background-image: url("../images/tcc/unhappy.jpg");
 }
 
 .hero-slide--4 {
-  background-image: url("../images/ttc/beach.jpg");
+  background-image: url("../images/tcc/beach.jpg");
 }
 
 .hero-caption {
@@ -539,7 +551,7 @@ main {
 }
 
 .page-hero--honoraires {
-  background-image: url("../images/ttc/hero.jpg");
+  background-image: url("../images/tcc/hero.jpg");
 }
 
 .page-hero--neuro {
@@ -547,7 +559,7 @@ main {
 }
 
 .page-hero--tcc {
-  background-image: url("../images/ttc/hero.jpg");
+  background-image: url("../images/tcc/hero.jpg");
   background-position: bottom;
 }
 
@@ -770,10 +782,6 @@ main {
 .neuropsy .neuro-section:nth-child(even) {
   background: var(--sage-50);
 }
-.neuropsy .neuro-section h2.section-tag {
-  position: absolute;
-  margin-top: -34px;
-}
 .neuropsy .neuro-section .img {
   width: 50%;
   min-width: 380px;
@@ -920,8 +928,8 @@ main {
     padding: 20px;
   }
 }
-/* ttc sections */
-.ttc-section {
+/* tcc sections */
+.tcc-section {
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -929,33 +937,29 @@ main {
   min-height: 80vh;
   padding: 70px 0;
 }
-.ttc-section:nth-child(even) {
+.tcc-section:nth-child(even) {
   flex-wrap: wrap;
   background: var(--sage-50);
 }
-.ttc-section:nth-child(odd) {
+.tcc-section:nth-child(odd) {
   flex-wrap: wrap-reverse;
 }
-.ttc-section h2.section-tag {
-  position: absolute;
-  margin-top: -34px;
-}
-.ttc-section h5 {
+.tcc-section h5 {
   text-transform: uppercase;
   font-size: 1.25rem;
   color: var(--sage-700);
 }
-.ttc-section .ttc-area {
+.tcc-section .tcc-area {
   flex: 1 1 440px;
 }
-.ttc-section .img {
+.tcc-section .img {
   background-size: cover !important;
   background-position: center;
   border-radius: var(--radius-lg);
   margin: 0 20px;
   min-height: 60vh !important;
 }
-.ttc-section .text {
+.tcc-section .text {
   margin: 0;
   display: flex;
   justify-content: center;
@@ -963,18 +967,18 @@ main {
   flex-wrap: wrap;
   padding: 20px;
 }
-.ttc-section .text p {
+.tcc-section .text p {
   width: 70%;
   margin: auto;
   color: var(--slate-light);
 }
-.ttc-section .text .detail {
+.tcc-section .text .detail {
   padding: 30px;
   margin: auto;
   text-align: center;
 }
-.ttc-section .text ul,
-.ttc-section .text ol {
+.tcc-section .text ul,
+.tcc-section .text ol {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -983,8 +987,8 @@ main {
   align-self: center;
   padding: 0;
 }
-.ttc-section .text ul li,
-.ttc-section .text ol li {
+.tcc-section .text ul li,
+.tcc-section .text ol li {
   width: 100%;
   text-align: center;
   padding: 4px;
@@ -1195,34 +1199,34 @@ main {
 
 /* background images */
 .techniques1 .img {
-  background: url("../images/ttc/beach.jpg") no-repeat center;
+  background: url("../images/tcc/beach.jpg") no-repeat center;
 }
 
 .techniques2 .img {
-  background: url("../images/ttc/balance.jpg") no-repeat bottom;
+  background: url("../images/tcc/balance.jpg") no-repeat bottom;
 }
 
 .who .img {
-  background: url("../images/ttc/unhappy.jpg") no-repeat center;
+  background: url("../images/tcc/unhappy.jpg") no-repeat center;
 }
 
 .who2 .img {
-  background: url("../images/ttc/girl.jpg") no-repeat center left;
+  background: url("../images/tcc/girl.jpg") no-repeat center left;
 }
 
 .deroulement .img {
-  background: url("../images/ttc/stairs.jpg") no-repeat center;
+  background: url("../images/tcc/stairs.jpg") no-repeat center;
 }
 
 .deroulement2 .img {
-  background: url("../images/ttc/puzzle.jpg") no-repeat center left;
+  background: url("../images/tcc/puzzle.jpg") no-repeat center left;
 }
 
 @media (max-width: 768px) {
   .who .text-wrap {
     width: 100%;
   }
-  .ttc-section .text p {
+  .tcc-section .text p {
     width: 100%;
   }
   .deroulement .detail ol {
@@ -1251,10 +1255,10 @@ main {
   margin-bottom: 14px;
 }
 .timeline-item p {
-  padding: 18px 26px !important;
+  padding: 18px 26px;
   font-size: 1rem;
   color: var(--slate-light);
-  margin: 0 !important;
+  margin: 0;
 }
 .timeline-item:nth-child(even) .timeline-content {
   float: right;
@@ -1262,6 +1266,9 @@ main {
 .timeline-item:nth-child(even) .timeline-content .date {
   right: auto;
   left: 0;
+}
+.timeline-item:nth-child(even) .timeline-content p {
+  padding: 18px 26px 18px 46px;
 }
 .timeline-item:nth-child(even) .timeline-content::after {
   content: "";
@@ -2054,3 +2061,5 @@ embed {
 .organisme-wrapper .reclamation-wrapper .text p {
   color: var(--slate-light);
 }
+
+/*# sourceMappingURL=style.css.map */
