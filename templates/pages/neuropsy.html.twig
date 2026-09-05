@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="hero-neuro hero">
+<div class="page-hero page-hero--neuro">
   <h1>La NEUROPSY</h1>
 </div>
-<div class="ttc-description category-description" id="definition">
+<div class="category-description" id="definition">
   <p>
     La neuropsychologie est une spécialité de la psychologie. Elle fournit une compréhension scientifique des relations qu’entretiennent le cerveau et les fonctions cognitives.
   </p>
@@ -18,8 +18,8 @@
     Chez l’enfant la neuropsychologie intègre le développement des différentes fonctions cognitives, immense chantier de construction en constant remaniement. C ‘est cette complexité extrême qui rend compte de l’important retard de la neuropsychologie infantile comparativement à celle de l’adulte.
   </p>
 </div>
-<main class="neuropsy">
-  <span id="pour-qui" class="p-4 span-anchor"></span>
+<div class="neuropsy">
+  <span id="pour-qui" class="anchor-offset"></span>
   <section class="neuro-section neuro-who">
     <div class="text text1 who">
       <ul class="tilesWrap who-content">
@@ -66,20 +66,20 @@
     </div>
 
     <div class="img">
-      <h2 class="shadow">pour qui ?</h2>
+      <h2 class="section-tag">pour qui ?</h2>
     </div>
   </section>
 
-  <span id="bilans" class="p-4 span-anchor"></span>
+  <span id="bilans" class="anchor-offset"></span>
 
   <section class="neuro-section neuro-bilan">
     <div class="img">
-      <h2 class="shadow">
+      <h2 class="section-tag">
         LES BILANS
       </h2>
     </div>
 
-    <div class="text container">
+    <div class="text">
       <h3>les bilans psychométriques et neuropsychologiques sont une série de tests qui ont pour objectif de: </h3>
       <div class="wrapper">
         <div class="bilans">
@@ -97,7 +97,7 @@
     </div>
   </section>
 
-  <span id="deroulement" class="p-4 span-anchor"></span>
+  <span id="deroulement" class="anchor-offset"></span>
   <section class="neuro-section neuro-deroulement">
     <div class="text">
       <section class="timeline">
@@ -158,13 +158,13 @@
     </div>
 
     <div class="img">
-      <h2 class="shadow">
+      <h2 class="section-tag">
         le déroulement
       </h2>
     </div>
   </section>
 
-  <span id="durée" class="p-4 span-anchor"></span>
+  <span id="durée" class="anchor-offset"></span>
 
   <section class="neuro-section neuro-duration">
     <h2 class="">
@@ -185,7 +185,7 @@
     </div>
   </section>
 
-  <span id="remédiation-cognitive" class="p-4 span-anchor"></span>
+  <span id="remédiation-cognitive" class="anchor-offset"></span>
 
   <div class="neuro-section neuro-remediation">
     <div class="text">
@@ -205,5 +205,5 @@
       </h2>
     </div>
   </div>
-</main>
+</div>
 {% endblock %}

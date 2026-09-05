@@ -1,0 +1,63 @@
+.honoraires {
+  padding: 70px 0 90px;
+
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    h2 {
+      text-align: center;
+      color: var(--sage-700);
+    }
+  }
+
+  > .wrapper > hr {
+    max-width: 120px;
+    margin: 16px auto 40px;
+    border-top-width: 3px;
+    border-color: var(--terracotta-300);
+  }
+
+  font-size: 1.05rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  li {
+    flex: 1 1 280px;
+    max-width: 320px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border-top: 4px solid var(--sage-500);
+    padding: 26px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft-lg);
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      color: var(--sage-700);
+      text-align: center;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--sage-100);
+    }
+
+    p {
+      text-align: center;
+      color: var(--slate-light);
+      margin: 0;
+    }
+  }
+}

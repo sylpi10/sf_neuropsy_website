@@ -1,0 +1,136 @@
+.timeline {
+  position: relative;
+  line-height: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+
+  &::before {
+    content: "";
+    background: var(--sage-100);
+    width: 4px;
+    height: 95%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-item {
+  width: 100%;
+  margin-bottom: 14px;
+
+  p {
+    padding: 18px 26px !important;
+    font-size: 1rem;
+    color: var(--slate-light);
+    margin: 0 !important;
+  }
+
+  &:nth-child(even) {
+    .timeline-content {
+      float: right;
+
+      .date {
+        right: auto;
+        left: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        width: 0;
+        height: 0;
+        top: 30px;
+        left: -15px;
+        border-width: 10px 15px 10px 0;
+        border-color: transparent var(--white) transparent transparent;
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+.timeline-content {
+  position: relative;
+  width: 45%;
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+
+  &::after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    width: 0;
+    height: 0;
+    top: 30px;
+    right: -15px;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent var(--white);
+  }
+}
+
+.timeline-img {
+  width: 20px;
+  height: 20px;
+  background: var(--sage-600);
+  border: 3px solid var(--ivory);
+  border-radius: var(--radius-full);
+  position: absolute;
+  left: 50%;
+  margin-top: 30px;
+  margin-left: -10px;
+}
+
+.date {
+  background: var(--terracotta-500);
+  display: inline-block;
+  color: var(--white);
+  font-weight: 600;
+  border-radius: var(--radius-md) 0 var(--radius-md) 0;
+  padding: 8px 14px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .timeline {
+    width: 100%;
+
+    &::before {
+      left: 20px;
+    }
+  }
+  .timeline-img {
+    left: 20px;
+  }
+  .timeline-item {
+    .timeline-content {
+      max-width: calc(100% - 50px);
+      width: 100%;
+      float: right !important;
+
+      .date {
+        left: auto !important;
+        right: 0 !important;
+      }
+
+      &::after {
+        left: -15px !important;
+        border-width: 10px 15px 10px 0 !important;
+        border-color: transparent var(--white) transparent transparent !important;
+      }
+    }
+    p {
+      padding: 16px 20px !important;
+    }
+  }
+}

@@ -1,49 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active carousel1">
-      <div class="carousel-caption d-md-block">
-        <h1>Cabinet de psychologie
-          <br> Emmanuelle Mir,
-        </h1>
-        <h4> Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC - EMDR
-          <br> A La Batie Neuve
-        </h4>
-      </div>
-    </div>
-    <div class="carousel-item carousel2">
-      <div class="carousel-caption d-md-block">
-        <h2> Spécialisée Neuropsychologie des troubles des apprentissages</h2>
-      </div>
-    </div>
-    <div class="carousel-item carousel3">
-      <div class="carousel-caption d-md-block">
-        <h2> Spécialisée en T.C.C <br>
-          Thérapie Comportementale et Cognitive</h2>
-      </div>
-    </div>
-    <div class="carousel-item  carousel4">
-      <div class="carousel-caption d-md-block">
-        <h2> Prise en charge, enfants, adultes et personnes âgées </h2>
-        <address>
-          MAISON DE SANTE, 133 rue des Ecoles, 05230 LA BATIE NEUVE
-        </address>
-      </div>
+<section class="hero-slider">
+  <div class="hero-slide hero-slide--1 is-active">
+    <div class="hero-caption">
+      <h1>Cabinet de psychologie<br>Emmanuelle Mir</h1>
+      <h4>Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC – EMDR<br>À La Bâtie-Neuve</h4>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div>
+  <div class="hero-slide hero-slide--2">
+    <div class="hero-caption">
+      <h2>Spécialisée en neuropsychologie des troubles des apprentissages</h2>
+    </div>
+  </div>
+  <div class="hero-slide hero-slide--3">
+    <div class="hero-caption">
+      <h2>Spécialisée en T.C.C<br>Thérapie Comportementale et Cognitive</h2>
+    </div>
+  </div>
+  <div class="hero-slide hero-slide--4">
+    <div class="hero-caption">
+      <h2>Prise en charge enfants, adultes et personnes âgées</h2>
+      <address>Maison de santé, 133 rue des Écoles, 05230 La Bâtie-Neuve</address>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <button class="hero-dot is-active" type="button" aria-label="Diapositive 1"></button>
+    <button class="hero-dot" type="button" aria-label="Diapositive 2"></button>
+    <button class="hero-dot" type="button" aria-label="Diapositive 3"></button>
+    <button class="hero-dot" type="button" aria-label="Diapositive 4"></button>
+  </div>
+</section>
 
-<div class="home-organisme">
-  <h2>Organisme de formation <span>"Psycho-Parent-Alp"</span> <img src="{{ asset('assets/images/qualiopi.png') }}" alt="logo certification qualiopi" width="240"> </h2>
-</div>
+<section class="home-intro container">
+  <div class="home-intro-head">
+    <h2>Un accompagnement adapté à chacun</h2>
+    <p>Trois axes complémentaires pour comprendre, accompagner et transmettre.</p>
+  </div>
+
+  <div class="home-cards">
+    <a class="home-card" href="{{ path('app_neuropsy') }}">
+      <div class="home-card-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+      <h3>Neuropsychologie</h3>
+      <p>Bilans neuropsychologiques et psychométriques pour mieux comprendre le fonctionnement cognitif, chez l'enfant comme chez l'adulte.</p>
+    </a>
+    <a class="home-card home-card--accent" href="{{ path('app_tcc') }}">
+      <div class="home-card-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+      <h3>Thérapies T.C.C</h3>
+      <p>Des thérapies cognitives et comportementales validées scientifiquement, pour agir sur les pensées, les émotions et les comportements.</p>
+    </a>
+    <a class="home-card" href="{{ path('app_organisme_de_formation') }}">
+      <div class="home-card-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+      <h3>Se former</h3>
+      <p>L'organisme Psycho-Parent-Alp forme parents, aidants et professionnels autour des troubles du développement et du comportement.</p>
+    </a>
+  </div>
+</section>
+
+<section class="home-highlight">
+  <div class="home-highlight-card">
+    <h2>Organisme de formation <span>« Psycho-Parent-Alp »</span></h2>
+    <img src="{{ asset('assets/images/qualiopi.png') }}" alt="Logo certification Qualiopi" width="200">
+    <a class="btn btn-primary" href="{{ path('app_organisme_de_formation') }}">Découvrir les formations</a>
+  </div>
+</section>
 {% endblock %}

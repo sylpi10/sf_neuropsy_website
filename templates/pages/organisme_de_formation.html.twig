@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<main class="formation-container" id="organisme-de-formation">
-  <div class="title-wrapper">
-    <h1> Organisme de formation</h1>
+<div class="formation-container" id="organisme-de-formation">
+  <div class="formation-hero">
+    <div class="formation-hero-text">
+      <h1>Organisme de formation</h1>
+      <p>Former les parents, les aidants et les professionnels pour mieux accompagner les enfants au quotidien.</p>
+    </div>
     <img src="{{ asset('assets/images/formation/teaching.png') }}" alt="dessin d'élèves" width="260">
   </div>
 
@@ -11,5 +14,5 @@
   {% include 'partials/_formations.html.twig' %}
   {% include 'partials/_inscription.html.twig' %}
   {% include 'partials/_conditions_de_ventes.html.twig' %}
-</main>
+</div>
 {% endblock %}

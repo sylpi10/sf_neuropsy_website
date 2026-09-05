@@ -1,0 +1,326 @@
+/* ttc sections */
+.ttc-section {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0;
+  min-height: 80vh;
+  padding: 70px 0;
+
+  &:nth-child(even) {
+    flex-wrap: wrap;
+    background: var(--sage-50);
+  }
+  &:nth-child(odd) {
+    flex-wrap: wrap-reverse;
+  }
+
+  h2.section-tag {
+    position: absolute;
+    margin-top: -34px;
+  }
+
+  h5 {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    color: var(--sage-700);
+  }
+
+  .ttc-area {
+    flex: 1 1 440px;
+  }
+
+  .img {
+    background-size: cover !important;
+    background-position: center;
+    border-radius: var(--radius-lg);
+    margin: 0 20px;
+    min-height: 60vh !important;
+  }
+
+  .text {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    p {
+      width: 70%;
+      margin: auto;
+      color: var(--slate-light);
+    }
+
+    .detail {
+      padding: 30px;
+      margin: auto;
+      text-align: center;
+    }
+
+    ul,
+    ol {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      list-style: none;
+      width: 100%;
+      align-self: center;
+      padding: 0;
+
+      li {
+        width: 100%;
+        text-align: center;
+        padding: 4px;
+        align-self: center;
+      }
+    }
+  }
+}
+
+/* techniques part 1 */
+.techniques {
+  .text {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  p {
+    font-size: 1.3rem;
+    padding: 40px 0;
+    color: var(--slate);
+  }
+  .detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.technique-comportementales,
+.technique-cognitives,
+.autres-techniques {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 24px !important;
+  margin-bottom: 16px;
+
+  h5 {
+    margin-bottom: 8px;
+  }
+  hr {
+    margin: 12px 0;
+  }
+  p {
+    font-size: 1rem !important;
+    padding: 0 !important;
+    color: var(--slate-light);
+  }
+}
+
+/* techniques part 2 */
+.techniques2 .text {
+  display: flex;
+  flex-wrap: wrap;
+
+  .detail {
+    width: 100%;
+  }
+}
+
+/* for who ? */
+.who {
+  .text1 {
+    padding-top: 40px;
+  }
+  .text ul {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .text-wrap {
+    width: 33.33%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding: 18px;
+    font-size: 1.05rem;
+    margin: 6px;
+    transition: box-shadow 0.25s ease, background 0.25s ease;
+    color: var(--slate);
+    flex: 1 1 300px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+
+    &:hover,
+    &:focus-within {
+      box-shadow: var(--shadow-soft-lg);
+      cursor: pointer;
+
+      .definition {
+        z-index: 300;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  .definition {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+    background: var(--white);
+    position: absolute;
+    padding: 22px;
+    color: var(--slate);
+    bottom: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft-lg);
+    border-top: 4px solid var(--terracotta-500);
+
+    @media (min-width: 768px) {
+      width: 640px;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+
+    p {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--sage-100);
+      color: var(--slate-light);
+
+      ul {
+        text-align: left !important;
+        width: 100%;
+        margin: 0;
+
+        li {
+          background: none !important;
+          text-align: left !important;
+        }
+      }
+    }
+  }
+
+  .text2 .detail {
+    display: flex;
+    flex-direction: column;
+
+    h6 {
+      font-size: 1.3rem;
+      max-width: 640px;
+      margin: 0 auto 30px;
+      text-align: center;
+      color: var(--sage-700);
+    }
+
+    ul {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      .text-wrap {
+        width: 80%;
+        flex: none;
+        margin: 0 auto;
+
+        .definition {
+          left: 0;
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/* déroulement */
+.deroulement {
+  .text {
+    color: var(--slate);
+    padding: 0 !important;
+  }
+  h4 {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--sage-700);
+  }
+  .detail {
+    padding: 0;
+    width: 100%;
+  }
+  .detail ol {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 20px;
+
+    li {
+      flex: 1 1 260px;
+      display: flex;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+
+      p {
+        width: 100%;
+        color: var(--slate-light);
+        margin: 0;
+      }
+    }
+  }
+}
+
+/* background images */
+.techniques1 .img {
+  background: url("../images/ttc/beach.jpg") no-repeat center;
+}
+.techniques2 .img {
+  background: url("../images/ttc/balance.jpg") no-repeat bottom;
+}
+.who .img {
+  background: url("../images/ttc/unhappy.jpg") no-repeat center;
+}
+.who2 .img {
+  background: url("../images/ttc/girl.jpg") no-repeat center left;
+}
+.deroulement .img {
+  background: url("../images/ttc/stairs.jpg") no-repeat center;
+}
+.deroulement2 .img {
+  background: url("../images/ttc/puzzle.jpg") no-repeat center left;
+}
+
+@media (max-width: 768px) {
+  .who .text-wrap {
+    width: 100%;
+  }
+  .ttc-section .text p {
+    width: 100%;
+  }
+  .deroulement .detail ol {
+    padding: 0;
+  }
+}

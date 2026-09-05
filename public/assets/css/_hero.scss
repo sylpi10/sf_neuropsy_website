@@ -1,0 +1,158 @@
+/* Homepage rotating hero */
+.hero-slider {
+  position: relative;
+  height: 78vh;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.1s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(63, 69, 59, 0.45) 0%, rgba(63, 69, 59, 0.55) 100%);
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.hero-slide--1 {
+  background-image: url("../images/ttc/hero.jpg");
+}
+.hero-slide--2 {
+  background-image: url("../images/ttc/girl.jpg");
+}
+.hero-slide--3 {
+  background-image: url("../images/ttc/unhappy.jpg");
+}
+.hero-slide--4 {
+  background-image: url("../images/ttc/beach.jpg");
+}
+
+.hero-caption {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 24px;
+  padding: 34px 40px;
+  text-align: center;
+  background: rgba(250, 247, 241, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft-lg);
+
+  h1 {
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    color: var(--sage-700);
+    margin-bottom: 0.3em;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    color: var(--sage-700);
+  }
+
+  h4 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--slate-light);
+    margin: 0;
+  }
+
+  address {
+    font-style: normal;
+    color: var(--slate-light);
+    margin-top: 10px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 24px 22px;
+  }
+}
+
+.hero-dots {
+  position: absolute;
+  z-index: 2;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+
+  &.is-active {
+    background: var(--white);
+    transform: scale(1.25);
+  }
+}
+
+/* Generic inner-page banner */
+.page-hero {
+  height: 46vh;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(63, 69, 59, 0.35) 0%, rgba(63, 69, 59, 0.55) 100%);
+  }
+
+  h1 {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.page-hero--cabinet {
+  background-image: url("../images/cabinet.jpg");
+}
+.page-hero--honoraires {
+  background-image: url("../images/ttc/hero.jpg");
+}
+.page-hero--neuro {
+  background-image: url("../images/nerve-cell.jpg");
+}
+.page-hero--tcc {
+  background-image: url("../images/ttc/hero.jpg");
+  background-position: bottom;
+}
+.page-hero--references {
+  background-image: url("../images/graduation.jpg");
+}
