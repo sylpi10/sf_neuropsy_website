@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block preload %}
+  <link rel="preload" as="image" href="{{ asset('assets/images/tcc/hero.webp') }}" fetchpriority="high" type="image/webp">
+{% endblock %}
+
 {% block body %}
 <section class="hero-slider">
   <div class="hero-slide hero-slide--1 is-active">
@@ -8,17 +12,17 @@
       <h4>Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC – EMDR<br>À La Bâtie-Neuve</h4>
     </div>
   </div>
-  <div class="hero-slide hero-slide--2">
+  <div class="hero-slide hero-slide--2" data-bg="{{ asset('assets/images/tcc/girl.webp') }}">
     <div class="hero-caption">
       <h2>Spécialisée en neuropsychologie des troubles des apprentissages</h2>
     </div>
   </div>
-  <div class="hero-slide hero-slide--3">
+  <div class="hero-slide hero-slide--3" data-bg="{{ asset('assets/images/tcc/unhappy.webp') }}">
     <div class="hero-caption">
       <h2>Spécialisée en T.C.C<br>Thérapie Comportementale et Cognitive</h2>
     </div>
   </div>
-  <div class="hero-slide hero-slide--4">
+  <div class="hero-slide hero-slide--4" data-bg="{{ asset('assets/images/tcc/beach.webp') }}">
     <div class="hero-caption">
       <h2>Prise en charge enfants, adultes et personnes âgées</h2>
       <address>Maison de santé, 133 rue des Écoles, 05230 La Bâtie-Neuve</address>
@@ -60,7 +64,7 @@
 <section class="home-highlight">
   <div class="home-highlight-card">
     <h2>Organisme de formation <span>« Psycho-Parent-Alp »</span></h2>
-    <img src="{{ asset('assets/images/qualiopi.png') }}" alt="Logo certification Qualiopi" width="200">
+    <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200">
     <a class="btn btn-primary" href="{{ path('app_organisme_de_formation') }}">Découvrir les formations</a>
   </div>
 </section>

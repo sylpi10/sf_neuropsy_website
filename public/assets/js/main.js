@@ -65,6 +65,31 @@ function initHeader() {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
+function loadDeferredSlides(slides) {
+  function apply() {
+    slides.forEach(function (slide) {
+      var bg = slide.getAttribute('data-bg');
+      if (!bg) return;
+      slide.style.backgroundImage = 'url("' + bg + '")';
+      slide.removeAttribute('data-bg');
+    });
+  }
+
+  function schedule() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(apply, { timeout: 2000 });
+    } else {
+      setTimeout(apply, 500);
+    }
+  }
+
+  if (document.readyState === 'complete') {
+    schedule();
+  } else {
+    window.addEventListener('load', schedule);
+  }
+}
+
 function initHero() {
   var hero = document.querySelector('.hero-slider');
   if (!hero) return;
@@ -80,6 +105,8 @@ function initHero() {
   slides.forEach(function (slide, i) {
     slide.style.transform = 'translateX(' + (i === current ? 0 : 100) + '%)';
   });
+
+  loadDeferredSlides(slides);
 
   function shortestDirection(from, to) {
     var diff = to - from;

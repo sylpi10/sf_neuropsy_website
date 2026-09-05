@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  {% block preload %}{% endblock %}
   <meta name="description" content="{{ meta_description|default('') }}" />
   <meta name="name" content="{{ meta_name|default('') }}" />
   <title>{% block title %}{{ title|default('Psy TCC') }}{% endblock %}</title>
@@ -17,7 +18,7 @@
   <header class="site-header" id="top">
     <div class="nav-wrap">
       <a class="brand" href="{{ path('app_home') }}">
-        <img src="{{ asset('assets/images/brain.png') }}" alt="Logo Emmanuelle Mir" class="brand-logo" width="40" height="40">
+        <img src="{{ asset('assets/images/brain.webp') }}" alt="Logo Emmanuelle Mir" class="brand-logo" width="40" height="40">
         <span class="brand-name">Emmanuelle Mir<small>Psychologue &amp; Psychothérapeute</small></span>
       </a>
 
@@ -93,7 +94,7 @@
       </address>
 
       <div class="footer-item footer-qualiopi">
-        <img src="{{ asset('assets/images/qualiopi.png') }}" alt="Logo certification Qualiopi" width="200">
+        <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200">
       </div>
 
       <div class="footer-item">

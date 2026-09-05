@@ -34,17 +34,11 @@
     }
 }
 
+// Slide 1 is the LCP candidate: loaded eagerly via CSS + <link rel="preload"> (see base.html.twig).
+// Slides 2-4 have no background-image here on purpose: they're set from JS (main.js)
+// once the page has settled, so they don't compete with critical above-the-fold requests.
 .hero-slide--1 {
-    background-image: url("../images/tcc/hero.jpg");
-}
-.hero-slide--2 {
-    background-image: url("../images/tcc/girl.jpg");
-}
-.hero-slide--3 {
-    background-image: url("../images/tcc/unhappy.jpg");
-}
-.hero-slide--4 {
-    background-image: url("../images/tcc/beach.jpg");
+    background-image: url("../images/tcc/hero.webp");
 }
 
 .hero-caption {
@@ -150,18 +144,18 @@
 }
 
 .page-hero--cabinet {
-    background-image: url("../images/cabinet.jpg");
+    background-image: url("../images/cabinet.webp");
 }
 .page-hero--honoraires {
-    background-image: url("../images/tcc/hero.jpg");
+    background-image: url("../images/tcc/hero.webp");
 }
 .page-hero--neuro {
-    background-image: url("../images/nerve-cell.jpg");
+    background-image: url("../images/nerve-cell.webp");
 }
 .page-hero--tcc {
-    background-image: url("../images/tcc/hero.jpg");
+    background-image: url("../images/tcc/hero.webp");
     background-position: bottom;
 }
 .page-hero--references {
-    background-image: url("../images/graduation.jpg");
+    background-image: url("../images/graduation.webp");
 }
