@@ -68,24 +68,54 @@ function initHeader() {
 function initHero() {
   var hero = document.querySelector('.hero-slider');
   if (!hero) return;
-  var slides = hero.querySelectorAll('.hero-slide');
-  var dots = hero.querySelectorAll('.hero-dot');
-  if (slides.length < 2) return;
+  var slides = Array.prototype.slice.call(hero.querySelectorAll('.hero-slide'));
+  var dots = Array.prototype.slice.call(hero.querySelectorAll('.hero-dot'));
+  var count = slides.length;
+  if (count < 2) return;
 
   var current = 0;
   var delay = 6500;
   var timer = null;
 
-  function show(index) {
-    slides[current].classList.remove('is-active');
+  slides.forEach(function (slide, i) {
+    slide.style.transform = 'translateX(' + (i === current ? 0 : 100) + '%)';
+  });
+
+  function shortestDirection(from, to) {
+    var diff = to - from;
+    if (diff > count / 2) diff -= count;
+    if (diff < -count / 2) diff += count;
+    return diff < 0 ? -1 : 1;
+  }
+
+  function goTo(index) {
+    var next = (index + count) % count;
+    if (next === current) return;
+
+    var direction = shortestDirection(current, next);
+    var incoming = slides[next];
+    var outgoing = slides[current];
+
+    incoming.style.transition = 'none';
+    incoming.style.transform = 'translateX(' + direction * 100 + '%)';
+    void incoming.offsetWidth;
+    incoming.style.transition = '';
+
+    requestAnimationFrame(function () {
+      outgoing.style.transform = 'translateX(' + -direction * 100 + '%)';
+      incoming.style.transform = 'translateX(0)';
+    });
+
+    outgoing.classList.remove('is-active');
+    incoming.classList.add('is-active');
     dots[current] && dots[current].classList.remove('is-active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('is-active');
-    dots[current] && dots[current].classList.add('is-active');
+    dots[next] && dots[next].classList.add('is-active');
+
+    current = next;
   }
 
   function next() {
-    show(current + 1);
+    goTo(current + 1);
   }
 
   function restart() {
@@ -95,7 +125,7 @@ function initHero() {
 
   dots.forEach(function (dot, i) {
     dot.addEventListener('click', function () {
-      show(i);
+      goTo(i);
       restart();
     });
   });
