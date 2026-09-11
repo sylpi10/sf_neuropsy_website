@@ -9,7 +9,6 @@
 /public/bundles/
 /var/
 /vendor/
-.htaccess
 ###< symfony/framework-bundle ###
 
 ###> front-end (sass) ###
