@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block preload %}
-  <link rel="preload" as="image" href="{{ asset('assets/images/tcc/hero.webp') }}" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="{{ asset('assets/images/tcc/hero-mobile.webp') }}" media="(max-width: 768px)" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="{{ asset('assets/images/tcc/hero.webp') }}" media="(min-width: 769px)" fetchpriority="high" type="image/webp">
 {% endblock %}
 
 {% block body %}
@@ -9,7 +10,7 @@
   <div class="hero-slide hero-slide--1 is-active">
     <div class="hero-caption">
       <h1>Cabinet de psychologie<br>Emmanuelle Mir</h1>
-      <h4>Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC – EMDR<br>À La Bâtie-Neuve</h4>
+      <p class="hero-subtitle">Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC – EMDR<br>À La Bâtie-Neuve</p>
     </div>
   </div>
   <div class="hero-slide hero-slide--2" data-bg="{{ asset('assets/images/tcc/girl.webp') }}">

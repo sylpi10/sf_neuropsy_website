@@ -39,6 +39,10 @@
 // once the page has settled, so they don't compete with critical above-the-fold requests.
 .hero-slide--1 {
     background-image: url("../images/tcc/hero.webp");
+
+    @media (max-width: 768px) {
+        background-image: url("../images/tcc/hero-mobile.webp");
+    }
 }
 
 .hero-caption {
@@ -63,7 +67,7 @@
         color: var(--sage-700);
     }
 
-    h4 {
+    .hero-subtitle {
         font-family: var(--font-body);
         font-weight: 500;
         font-size: 1.05rem;
@@ -90,23 +94,27 @@
     right: 0;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 2px;
 }
 
+// Zone tactile 24px, pastille visible de 10px (background-clip sur le padding)
 .hero-dot {
-    width: 10px;
-    height: 10px;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
     border-radius: var(--radius-full);
     border: none;
     background: rgba(255, 255, 255, 0.55);
+    background-clip: content-box;
     cursor: pointer;
-    padding: 0;
+    padding: 7px;
     transition:
         background 0.25s ease,
         transform 0.25s ease;
 
     &.is-active {
         background: var(--white);
+        background-clip: content-box;
         transform: scale(1.25);
     }
 }

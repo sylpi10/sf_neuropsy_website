@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="1xsG3jwxALfLukgMmEtq0CITmIf-Ce3lbgR2Qm4fMdM" />
   <meta name="google-site-verification" content="YoXWOjbcpymHCzSe6C8QDCQkfz8pZpuflG7D_nCb7WQ" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link rel="preconnect" href="https://use.fontawesome.com" crossorigin>
+  {# Polices et icônes chargées sans bloquer le rendu (swap au onload) #}
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  </noscript>
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
   {% block preload %}{% endblock %}
