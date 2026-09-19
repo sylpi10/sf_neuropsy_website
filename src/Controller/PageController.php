@@ -14,26 +14,17 @@ class PageController extends AbstractController
     public function home(): Response
     {
         return $this->render("pages/index.html.twig", [
-            "title" =>
-                "Neuropsychologue à La Bâtie-Neuve (05) – TCC, bilans & formations | Emanuelle Mir",
-            "meta_description" =>
-                "Neuropsychologue à La Bâtie-Neuve (Hautes-Alpes 05), proche Briançon & Gap : bilans neuropsychologiques, thérapies TCC, accompagnement adultes/enfants/ados. Formations et ateliers pour professionnels. Rendez-vous au cabinet.",
-            "meta_name" =>
-                "neuropsychologue La Bâtie-Neuve, neuropsychologue 05, TCC Hautes-Alpes, bilan neuropsychologique Briançon, neuropsychologie Gap, thérapie cognitive et comportementale 05, troubles attention, mémoire, apprentissages, formations neuropsychologie, ateliers professionnels, Emanuelle Mir",
-            "meta_robots" => "index,follow",
-            "canonical" => "https://psytcc-hautesalpes.fr/",
-            "og" => [
+            "seo" => [
                 "title" =>
-                    "Emanuelle Mir – Neuropsychologue à La Bâtie-Neuve (05) | TCC, bilans & formations",
+                    "Neuropsychologue à La Bâtie-Neuve (05) – TCC, bilans & formations | Emmanuelle Mir",
                 "description" =>
+                    "Neuropsychologue à La Bâtie-Neuve (Hautes-Alpes 05), proche Briançon & Gap : bilans neuropsychologiques, thérapies TCC, accompagnement adultes/enfants/ados. Formations et ateliers pour professionnels. Rendez-vous au cabinet.",
+                "keywords" =>
+                    "neuropsychologue La Bâtie-Neuve, neuropsychologue 05, TCC Hautes-Alpes, bilan neuropsychologique Briançon, neuropsychologie Gap, thérapie cognitive et comportementale 05, troubles attention, mémoire, apprentissages, formations neuropsychologie, ateliers professionnels, Emmanuelle Mir",
+                "og_title" =>
+                    "Emmanuelle Mir – Neuropsychologue à La Bâtie-Neuve (05) | TCC, bilans & formations",
+                "og_description" =>
                     "Cabinet de neuropsychologie à La Bâtie-Neuve, proche Briançon & Gap : bilans, TCC, accompagnement et formations.",
-                "type" => "website",
-                "url" => "https://psytcc-hautesalpes.fr/",
-                "image" =>
-                    "https://psytcc-hautesalpes.fr/assets/images/logo.png",
-                "site_name" =>
-                    "Emanuelle Mir – Neuropsychologue à La Bâtie-Neuve (05) | TCC, bilans & formations",
-                "locale" => "fr_FR",
             ],
         ]);
     }
@@ -42,7 +33,12 @@ class PageController extends AbstractController
     public function cabinet(): Response
     {
         return $this->render("pages/cabinet.html.twig", [
-            "title" => "Le cabinet",
+            "seo" => [
+                "title" =>
+                    "Le cabinet – Emmanuelle Mir, psychologue à La Bâtie-Neuve (05)",
+                "description" =>
+                    "Cabinet de psychologie à la Maison de santé de La Bâtie-Neuve (Hautes-Alpes) : adresse, jours de consultation et prise de rendez-vous avec Emmanuelle Mir.",
+            ],
         ]);
     }
 
@@ -50,7 +46,12 @@ class PageController extends AbstractController
     public function honoraires(): Response
     {
         return $this->render("pages/honoraires.html.twig", [
-            "title" => "Honoraires",
+            "seo" => [
+                "title" =>
+                    "Honoraires et remboursements – Emmanuelle Mir, psychologue (05)",
+                "description" =>
+                    "Tarifs des consultations et des bilans (neuropsychologique, efficience intellectuelle, attentionnel), paiement en plusieurs fois et informations sur le remboursement par les mutuelles.",
+            ],
         ]);
     }
 
@@ -58,7 +59,12 @@ class PageController extends AbstractController
     public function neuropsy(): Response
     {
         return $this->render("pages/neuropsy.html.twig", [
-            "title" => "La Neuropsy",
+            "seo" => [
+                "title" =>
+                    "Évaluations neuropsychologiques, bilans enfants et adultes | Emmanuelle Mir",
+                "description" =>
+                    "Bilans neuropsychologiques et psychométriques à La Bâtie-Neuve : pour qui, déroulement, durée et remédiation cognitive. Enfants, adultes et personnes âgées.",
+            ],
         ]);
     }
 
@@ -66,7 +72,12 @@ class PageController extends AbstractController
     public function tcc(): Response
     {
         return $this->render("pages/tcc.html.twig", [
-            "title" => "Les TCC",
+            "seo" => [
+                "title" =>
+                    "Thérapies cognitives et comportementales (TCC) | Emmanuelle Mir",
+                "description" =>
+                    "Thérapie cognitive et comportementale à La Bâtie-Neuve : techniques utilisées, troubles pris en charge (anxiété, phobies, TOC, dépression, burn-out…) et déroulement d'une thérapie.",
+            ],
         ]);
     }
 
@@ -74,7 +85,12 @@ class PageController extends AbstractController
     public function references(): Response
     {
         return $this->render("pages/references.html.twig", [
-            "title" => "Références",
+            "seo" => [
+                "title" =>
+                    "Références et diplômes – Emmanuelle Mir, psychologue clinicienne",
+                "description" =>
+                    "Parcours d'Emmanuelle Mir : psychologue clinicienne, psychothérapeute TCC, DU de neuropsychopathologie des apprentissages, EMDR et expériences en secteur médico-social.",
+            ],
         ]);
     }
 
@@ -91,7 +107,12 @@ class PageController extends AbstractController
         ]);
 
         return $this->render("pages/organisme_de_formation.html.twig", [
-            "title" => "Les formations",
+            "seo" => [
+                "title" =>
+                    "Organisme de formation Psycho-Parent-Alp – formations parents et professionnels",
+                "description" =>
+                    "Psycho-Parent-Alp, organisme de formation certifié Qualiopi (Hautes-Alpes) : formations pour parents, aidants et professionnels du médico-social, inscriptions et informations pratiques.",
+            ],
             "aidantCategory" => $aidantCategory,
             "proCategory" => $proCategory,
             "aidantFormations" => $formationRepository->findByCategoryCode(

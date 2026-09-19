@@ -1,0 +1,29 @@
+{#
+  Balises SEO / Open Graph. Chaque action de PageController passe un tableau `seo` :
+    title, description                      (recommandés)
+    keywords, robots                        (optionnels, rendus seulement si présents)
+    og_title, og_description                (optionnels, sinon title / description)
+    image (chemin asset()), image_alt       (optionnels, sinon image par défaut du site)
+  Canonical et og:url sont déduits du chemin de la requête, sur l'URL de prod (global `site_url`).
+#}
+{% set seo = seo|default({}) %}
+{% set site_name = 'Emmanuelle Mir – Psychologue à La Bâtie-Neuve (05)' %}
+{% set page_title = seo.title|default(site_name) %}
+{% set page_description = seo.description|default('Psychologue, psychothérapeute Emmanuelle Mir, dans les Hautes-Alpes, Prise en charge enfants, adultes et personnes âgées, cabinet neuropsychologie') %}
+{% set page_url = site_url ~ app.request.pathInfo %}
+
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description }}">
+  {% if seo.keywords is defined %}<meta name="keywords" content="{{ seo.keywords }}">
+  {% endif %}
+  {% if seo.robots is defined %}<meta name="robots" content="{{ seo.robots }}">
+  {% endif %}
+  <link rel="canonical" href="{{ page_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="{{ page_url }}">
+  <meta property="og:title" content="{{ seo.og_title|default(page_title) }}">
+  <meta property="og:description" content="{{ seo.og_description|default(page_description) }}">
+  <meta property="og:image" content="{{ site_url ~ asset(seo.image|default('assets/images/og-default.jpg')) }}">
+  <meta property="og:image:alt" content="{{ seo.image_alt|default(site_name) }}">
