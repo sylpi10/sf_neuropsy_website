@@ -11,6 +11,32 @@
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
   {% block preload %}{% endblock %}
   {% include 'partials/_seo.html.twig' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Physician", "LocalBusiness"],
+    "@id": "{{ site_url }}/#cabinet",
+    "name": "Emmanuelle Mir – Psychologue & Neuropsychologue",
+    "url": "{{ site_url }}/",
+    "image": "{{ site_url ~ asset('assets/images/og-default.jpg') }}",
+    "telephone": "+33650576015",
+    "email": "emmanuellemir.psy@gmail.com",
+    "medicalSpecialty": "Psychiatric",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "133 rue des Écoles, Maison de santé",
+      "postalCode": "05230",
+      "addressLocality": "La Bâtie-Neuve",
+      "addressRegion": "Hautes-Alpes",
+      "addressCountry": "FR"
+    },
+    "geo": {"@type": "GeoCoordinates", "latitude": 44.5666668, "longitude": 6.1925078},
+    "areaServed": ["La Bâtie-Neuve", "Gap", "Briançon", "Hautes-Alpes"],
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday"]}
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
