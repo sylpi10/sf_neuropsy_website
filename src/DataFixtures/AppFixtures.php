@@ -114,7 +114,7 @@ class AppFixtures extends Fixture
                 "priceInter" => "620€ par stagiaire",
                 "priceIntra" => "Nous consulter",
                 "file" =>
-                    "4_COMPRENDRE_ET_GERER_AVEC_BIENTRAITANCE_LES%20COMPORTEMENTS_DITS%20AGRESSIFS_DU_JEUNE_ENFANT.pdf",
+                    "4_COMPRENDRE_ET_GERER_AVEC_BIENTRAITANCE_LES_COMPORTEMENTS_DITS_AGRESSIFS_DU_JEUNE_ENFANT.pdf",
                 "status" => true,
             ],
         ];
