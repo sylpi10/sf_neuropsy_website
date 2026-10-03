@@ -61,3 +61,30 @@
     }
   }
 }
+
+.mentions-legales {
+  padding: 60px 0 90px;
+
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    color: var(--sage-700);
+    margin: 36px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--terracotta-300);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    color: var(--slate-light);
+    line-height: 1.7;
+  }
+}

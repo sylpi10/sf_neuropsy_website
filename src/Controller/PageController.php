@@ -94,6 +94,19 @@ class PageController extends AbstractController
         ]);
     }
 
+    #[Route("/mentions-legales", name: "app_mentions_legales")]
+    public function mentionsLegales(): Response
+    {
+        return $this->render("pages/mentions_legales.html.twig", [
+            "seo" => [
+                "title" =>
+                    "Mentions légales – Emmanuelle Mir, psychologue (05)",
+                "description" =>
+                    "Mentions légales du site d'Emmanuelle Mir, psychologue à La Bâtie-Neuve : éditeur, hébergeur, propriété intellectuelle et données personnelles.",
+            ],
+        ]);
+    }
+
     #[Route("/organisme-de-formation", name: "app_organisme_de_formation")]
     public function organismeDeFormation(
         FormationRepository $formationRepository,

@@ -16,6 +16,7 @@ class SitemapController extends AbstractController
         "app_honoraires" => "0.6",
         "app_organisme_de_formation" => "0.6",
         "app_references" => "0.5",
+        "app_mentions_legales" => "0.2",
     ];
 
     #[Route("/sitemap.xml", name: "app_sitemap", format: "xml")]

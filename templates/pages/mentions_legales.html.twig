@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% set info = site_info() %}
+<div class="page-hero page-hero--mentions">
+  <h1>Mentions légales</h1>
+</div>
+
+<section class="mentions-legales">
+  <div class="wrapper">
+    <h2>Éditeur du site</h2>
+    <p>
+      {{ info and info.title ? info.title : 'Emmanuelle Mir, Cabinet de psychologie' }}<br>
+      Emmanuelle MIR, psychologue clinicienne – entrepreneur individuel<br>
+      {{ info and info.addressLine1 ? info.addressLine1 : 'MAISON DE SANTE' }},
+      {{ info and info.addressLine2 ? info.addressLine2 : '133 rue des Ecoles' }},
+      {{ info and info.postalCodeCity ? info.postalCodeCity : '05230 LA BATIE NEUVE' }}<br>
+      Téléphone : {{ info and info.phone ? info.phone : '06.50.57.60.15' }}<br>
+      E-mail : <a href="mailto:{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}">{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}</a><br>
+      SIRET : 812 767 143 000 41<br>
+      Numéro ADELI : 059301895
+    </p>
+    <p>Directrice de la publication : Emmanuelle MIR.</p>
+    <p>
+      Organisme de formation : <b>Psycho-Parent-Alp</b>, géré par Emmanuelle MIR.
+      Les conditions générales de vente des formations sont consultables sur la
+      <a href="{{ path('app_organisme_de_formation') }}#conditions-generales">page de l’organisme de formation</a>.
+    </p>
+
+    <h2>Conception et réalisation</h2>
+    <p><a href="https://sylvainpillet.com">Sylvain Pillet</a></p>
+
+    <h2>Hébergement</h2>
+    <p>
+      O2SWITCH SAS<br>
+      222-224 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France<br>
+      Téléphone : 04 44 44 60 40 – <a href="https://www.o2switch.fr">www.o2switch.fr</a>
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      L’ensemble des contenus de ce site (textes, images, documents) est protégé par le droit d’auteur.
+      Toute reproduction ou diffusion, totale ou partielle, sans autorisation préalable écrite est interdite.
+    </p>
+
+    <h2>Données personnelles</h2>
+    <p>
+      Ce site ne comporte aucun formulaire de contact et ne collecte aucune donnée personnelle de ses visiteurs.
+      Les informations que vous transmettez par téléphone ou par e-mail sont utilisées uniquement pour
+      répondre à votre demande et assurer votre suivi, et ne sont jamais cédées à des tiers.
+      Elles sont soumises au secret professionnel.
+    </p>
+    <p>
+      Conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés,
+      vous disposez d’un droit d’accès, de rectification et de suppression de vos données, que vous pouvez exercer
+      par e-mail à l’adresse ci-dessus. Vous pouvez également introduire une réclamation auprès de la
+      <a href="https://www.cnil.fr">CNIL</a>.
+    </p>
+
+    <h2>Cookies</h2>
+    <p>
+      Ce site n’utilise aucun cookie de mesure d’audience ni de publicité. Seuls des cookies techniques,
+      strictement nécessaires au fonctionnement de l’espace d’administration, peuvent être déposés.
+    </p>
+  </div>
+</section>
+{% endblock %}

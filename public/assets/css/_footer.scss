@@ -81,3 +81,13 @@
     font-size: 0.85rem;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
+
+.footer-bottom {
+    flex-wrap: wrap;
+    gap: 4px 0;
+}
+
+.footer-sep {
+    margin: 0 10px;
+    opacity: 0.5;
+}
