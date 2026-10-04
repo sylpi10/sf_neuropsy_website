@@ -1,0 +1,20 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirection canonique en un seul saut : https + domaine sans www.
+    # Chemin pris dans THE_REQUEST, sans l'ancien préfixe /public.
+    RewriteCond %{HTTP_HOST} ^www\. [NC]
+    RewriteCond %{THE_REQUEST} ^[A-Z]+\s(?:/public)?(/[^\s?]*)
+    RewriteRule ^ https://psytcc-hautesalpes.fr%1 [R=301,L,NE]
+
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} !on
+    RewriteCond %{THE_REQUEST} ^[A-Z]+\s(?:/public)?(/[^\s?]*)
+    RewriteRule ^ https://psytcc-hautesalpes.fr%1 [R=301,L,NE]
+
+    # Tout passe par /public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
