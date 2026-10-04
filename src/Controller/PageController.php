@@ -16,9 +16,9 @@ class PageController extends AbstractController
         return $this->render("pages/index.html.twig", [
             "seo" => [
                 "title" =>
-                    "Neuropsychologue à La Bâtie-Neuve (05) – TCC, bilans & formations | Emmanuelle Mir",
+                    "Neuropsychologue La Bâtie-Neuve (05) – TCC | Emmanuelle Mir",
                 "description" =>
-                    "Neuropsychologue à La Bâtie-Neuve (Hautes-Alpes 05), proche Briançon & Gap : bilans neuropsychologiques, thérapies TCC, accompagnement adultes/enfants/ados. Formations et ateliers pour professionnels. Rendez-vous au cabinet.",
+                    "Neuropsychologue à La Bâtie-Neuve (05), près de Gap : bilans neuropsychologiques, TCC pour enfants, ados et adultes, formations professionnelles.",
                 "keywords" =>
                     "neuropsychologue La Bâtie-Neuve, neuropsychologue 05, TCC Hautes-Alpes, bilan neuropsychologique Briançon, neuropsychologie Gap, thérapie cognitive et comportementale 05, troubles attention, mémoire, apprentissages, formations neuropsychologie, ateliers professionnels, Emmanuelle Mir",
                 "og_title" =>
@@ -35,7 +35,7 @@ class PageController extends AbstractController
         return $this->render("pages/cabinet.html.twig", [
             "seo" => [
                 "title" =>
-                    "Le cabinet – Emmanuelle Mir, psychologue à La Bâtie-Neuve (05)",
+                    "Le cabinet – Emmanuelle Mir, psychologue La Bâtie-Neuve",
                 "description" =>
                     "Cabinet de psychologie à la Maison de santé de La Bâtie-Neuve (Hautes-Alpes) : adresse, jours de consultation et prise de rendez-vous avec Emmanuelle Mir.",
             ],
@@ -48,9 +48,9 @@ class PageController extends AbstractController
         return $this->render("pages/honoraires.html.twig", [
             "seo" => [
                 "title" =>
-                    "Honoraires et remboursements – Emmanuelle Mir, psychologue (05)",
+                    "Honoraires et remboursements – Emmanuelle Mir",
                 "description" =>
-                    "Tarifs des consultations et des bilans (neuropsychologique, efficience intellectuelle, attentionnel), paiement en plusieurs fois et informations sur le remboursement par les mutuelles.",
+                    "Tarifs des consultations et des bilans neuropsychologiques, d'efficience et attentionnels. Paiement en plusieurs fois, remboursement par les mutuelles.",
             ],
         ]);
     }
@@ -61,9 +61,9 @@ class PageController extends AbstractController
         return $this->render("pages/neuropsy.html.twig", [
             "seo" => [
                 "title" =>
-                    "Évaluations neuropsychologiques, bilans enfants et adultes | Emmanuelle Mir",
+                    "Bilans neuropsychologiques enfant, adulte | Emmanuelle Mir",
                 "description" =>
-                    "Bilans neuropsychologiques et psychométriques à La Bâtie-Neuve : pour qui, déroulement, durée et remédiation cognitive. Enfants, adultes et personnes âgées.",
+                    "Bilans neuropsychologiques et psychométriques à La Bâtie-Neuve : pour qui, déroulement, durée, remédiation cognitive. Enfants, adultes et seniors.",
             ],
         ]);
     }
@@ -74,9 +74,9 @@ class PageController extends AbstractController
         return $this->render("pages/tcc.html.twig", [
             "seo" => [
                 "title" =>
-                    "Thérapies cognitives et comportementales (TCC) | Emmanuelle Mir",
+                    "Thérapies cognitives et comportementales | Emmanuelle Mir",
                 "description" =>
-                    "Thérapie cognitive et comportementale à La Bâtie-Neuve : techniques utilisées, troubles pris en charge (anxiété, phobies, TOC, dépression, burn-out…) et déroulement d'une thérapie.",
+                    "Thérapie cognitive et comportementale à La Bâtie-Neuve : anxiété, phobies, TOC, dépression, burn-out. Techniques utilisées et déroulement des séances.",
             ],
         ]);
     }
@@ -87,9 +87,9 @@ class PageController extends AbstractController
         return $this->render("pages/references.html.twig", [
             "seo" => [
                 "title" =>
-                    "Références et diplômes – Emmanuelle Mir, psychologue clinicienne",
+                    "Références et diplômes – Emmanuelle Mir, psychologue",
                 "description" =>
-                    "Parcours d'Emmanuelle Mir : psychologue clinicienne, psychothérapeute TCC, DU de neuropsychopathologie des apprentissages, EMDR et expériences en secteur médico-social.",
+                    "Parcours d'Emmanuelle Mir : psychologue clinicienne, psychothérapeute TCC, DU de neuropsychopathologie des apprentissages, EMDR, secteur médico-social.",
             ],
         ]);
     }
@@ -122,9 +122,9 @@ class PageController extends AbstractController
         return $this->render("pages/organisme_de_formation.html.twig", [
             "seo" => [
                 "title" =>
-                    "Organisme de formation Psycho-Parent-Alp – formations parents et professionnels",
+                    "Psycho-Parent-Alp – Formations parents et professionnels",
                 "description" =>
-                    "Psycho-Parent-Alp, organisme de formation certifié Qualiopi (Hautes-Alpes) : formations pour parents, aidants et professionnels du médico-social, inscriptions et informations pratiques.",
+                    "Psycho-Parent-Alp, organisme de formation certifié Qualiopi (05) : formations pour parents, aidants et professionnels du médico-social. Inscriptions.",
             ],
             "aidantCategory" => $aidantCategory,
             "proCategory" => $proCategory,
