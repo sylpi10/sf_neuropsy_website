@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   initHeader();
   initHero();
-  initDefinitions();
 });
 
 function initHeader() {
@@ -212,34 +211,4 @@ function initHero() {
 
   syncPauseButton();
   restart();
-}
-
-// Définitions des troubles (page TCC) : visibles au survol, et au clic / clavier via le bouton.
-function initDefinitions() {
-  var toggles = Array.prototype.slice.call(document.querySelectorAll('.definition-toggle'));
-  if (!toggles.length) return;
-
-  function close(btn) {
-    btn.parentNode.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-
-  toggles.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var isOpen = btn.getAttribute('aria-expanded') === 'true';
-      toggles.forEach(close);
-      if (!isOpen) {
-        btn.parentNode.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.text-wrap')) toggles.forEach(close);
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') toggles.forEach(close);
-  });
 }
