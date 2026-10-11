@@ -80,6 +80,11 @@ body {
     padding: 0;
 }
 
+// Les ancres et les éléments focalisés ne passent pas sous le header fixe
+html {
+    scroll-padding-top: var(--header-height);
+}
+
 body {
     background-color: var(--ivory);
     color: var(--slate);
@@ -148,6 +153,27 @@ ul {
     top: 16px;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--sage-700);
+    outline-offset: 2px;
+}
+.site-footer :focus-visible,
+.hero-dots :focus-visible {
+    outline-color: var(--white);
+}
+
 section.neuro-section,
 section.tcc-section {
     box-shadow:
@@ -213,6 +239,17 @@ section.tcc-section {
 
 main {
     padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 @import "header";

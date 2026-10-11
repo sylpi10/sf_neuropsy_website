@@ -1,6 +1,6 @@
 <div class="formations-wrapper" id="formations">
   <div class="text-wrapper">
-    <h3>Les principaux champs d'expertise:</h3>
+    <h2>Les principaux champs d'expertise:</h2>
 
     <div class="formation-texts">
       <p>L’organisme de formation <b>« Psycho-Parent-Alp »</b> a pour mission principal de former les Parents afin de mieux comprendre les difficultés rencontrées par leurs enfants. Nous
@@ -18,10 +18,10 @@
     <hr>
 
     <div class="formations-section">
-      <h3>Les formations:</h3>
+      <h2>Les formations:</h2>
 
       <div class="formation-content">
-        <h4>FORMATIONS DESTINEES AUX PARENTS, AUX AIDANTS ET AUX FAMILLES</h4>
+        <h3>Formations destinées aux parents, aux aidants et aux familles</h3>
         <div class="formations-cards-wrapper">
           {% for formation in aidantFormations %}
             {% set is_coming = not formation.status %}
@@ -31,7 +31,7 @@
               class="formation-card{% if is_coming %} to-come{% endif %}"
               {% if has_file %}href="{{ asset('uploads/formations/' ~ formation.fileName) }}" download{% endif %}
             >
-              <h5> {{ formation.title }} </h5>
+              <h4> {{ formation.title }} </h4>
               <div class="card-content">
                 <span class="duration">{{ icon('clock') }}{{ formation.duration }} jours </span>
                 <span class="duration">{{ icon('calendar') }}
@@ -53,7 +53,7 @@
                   </span>
                 {% endif %}
               </div>
-              {% if has_file %}<span class="download-icon"> {{ icon('download') }}</span>{% endif %}
+              {% if has_file %}<span class="download-icon"> {{ icon('download') }}<span class="visually-hidden">Télécharger le programme (PDF)</span></span>{% endif %}
             </{{ tag }}>
           {% else %}
             <p>Aucune formation disponible.</p>
@@ -62,7 +62,7 @@
       </div>
 
       <div class="formation-content">
-        <h4>FORMATIONS DESTINEES AUX PARENTS, AUX PROFESSIONNELS</h4>
+        <h3>Formations destinées aux parents, aux professionnels</h3>
         <div class="formations-cards-wrapper">
           {% for formation in proFormations %}
             {% set is_coming = not formation.status %}
@@ -72,7 +72,7 @@
               class="formation-card{% if is_coming %} to-come{% endif %}"
               {% if has_file %}href="{{ asset('uploads/formations/' ~ formation.fileName) }}" download{% endif %}
             >
-              <h5> {{ formation.title }} </h5>
+              <h4> {{ formation.title }} </h4>
               <div class="card-content">
                 <span class="duration">{{ icon('clock') }}{{ formation.duration }} jours </span>
                 <span class="duration">{{ icon('calendar') }}
@@ -90,7 +90,7 @@
                   </span>
                 {% endif %}
               </div>
-              {% if has_file %}<span class="download-icon"> {{ icon('download') }}</span>{% endif %}
+              {% if has_file %}<span class="download-icon"> {{ icon('download') }}<span class="visually-hidden">Télécharger le programme (PDF)</span></span>{% endif %}
             </{{ tag }}>
           {% else %}
             <p>Aucune formation disponible.</p>
@@ -103,14 +103,14 @@
 
     <div class="text proposed-formations">
       <div class="text">
-        <h3>Les formations et interventions proposée</h3>
+        <h2>Les formations et interventions proposée</h2>
         <div class="first-para">
           <p class="para"> <b>Les formations collectives à destination des parents/proches aidants:</b> Ces formations sont ouvertes à tout parent ou proche aidant d’un enfant/adolescent/adulte en
             situation de handicap ou présentant des particularités au quotidien en lien avec la thématique proposée et les prérequis. Elles se tiennent dans des salles de formations
             adaptés au nombre de stagiaire accueillis, et aux formations proposées. Formation de partout en France. L’offre de formation est réactualisée tous les ans. Voir formations cidessus.
             <br><br>
             (Exemple à GAP : Salle du foyer jeunes travailleurs ou salle Havvah) ou dans d’autres villes.</p>
-          <img src="{{ asset('assets/images/formation/alps_pic3.webp') }}" class="mountain-picture" alt="photo de montagne" width="500" height="260">
+          <img src="{{ asset('assets/images/formation/alps_pic3.webp') }}" class="mountain-picture" alt="" width="500" height="260">
         </div>
 
         <p><b>Les formations collectives à destination des professionnels:</b> Ces formations sont ouvertes à tout professionnel du secteur médico-social, selon les thématiques et les pré-

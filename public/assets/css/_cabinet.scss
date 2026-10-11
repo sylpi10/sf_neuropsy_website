@@ -6,6 +6,10 @@
   margin: 90px auto;
   font-size: 1.15rem;
 
+  h2 {
+    font-size: 1.17em;
+  }
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
     margin: 50px auto;

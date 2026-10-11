@@ -1,7 +1,5 @@
 .anchor-offset {
     display: block;
-    position: relative;
-    top: calc(-1 * var(--header-height));
     visibility: hidden;
 }
 
@@ -60,7 +58,10 @@
             flex: 1 1 460px;
             padding: 30px;
 
-            h3 {
+            .bilan-intro {
+                font-family: var(--font-display);
+                font-weight: 600;
+                line-height: 1.2;
                 color: var(--sage-700);
                 width: 100%;
                 text-align: center;
@@ -89,7 +90,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        .text h3 {
+        .text .bilan-intro {
             max-width: 640px;
             margin: 0 auto 30px;
             font-size: 1.25rem !important;

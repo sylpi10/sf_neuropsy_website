@@ -20,7 +20,7 @@
     //   margin-top: -34px;
     // }
 
-    h5 {
+    h3 {
         text-transform: uppercase;
         font-size: 1.25rem;
         color: var(--sage-700);
@@ -107,7 +107,7 @@
     padding: 24px !important;
     margin-bottom: 16px;
 
-    h5 {
+    h3 {
         margin-bottom: 8px;
     }
     hr {
@@ -142,12 +142,13 @@
         padding: 0;
     }
 
-    .text-wrap {
+    .text li.text-wrap {
         width: 33.33%;
         display: flex;
         align-content: center;
+        align-self: auto;
         flex-direction: column;
-        padding: 18px;
+        padding: 0;
         font-size: 1.05rem;
         margin: 6px;
         transition:
@@ -161,9 +162,8 @@
         position: relative;
 
         &:hover,
-        &:focus-within {
+        &.is-open {
             box-shadow: var(--shadow-soft-lg);
-            cursor: pointer;
 
             .definition {
                 z-index: 300;
@@ -171,6 +171,19 @@
                 opacity: 1;
             }
         }
+    }
+
+    .definition-toggle {
+        width: 100%;
+        height: 100%;
+        padding: 22px;
+        border: none;
+        border-radius: inherit;
+        background: none;
+        color: inherit;
+        font: inherit;
+        text-align: center;
+        cursor: pointer;
     }
 
     .definition {
@@ -222,8 +235,12 @@
         display: flex;
         flex-direction: column;
 
-        h6 {
+        .who-intro {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
             font-size: 1.3rem;
+            width: auto;
             max-width: 640px;
             margin: 0 auto 30px;
             text-align: center;
@@ -243,7 +260,8 @@
                 margin: 0 auto;
 
                 .definition {
-                    left: 0;
+                    left: auto;
+                    right: 0;
                 }
 
                 @media (max-width: 768px) {
@@ -260,7 +278,11 @@
         color: var(--slate);
         padding: 0 !important;
     }
-    h4 {
+    .text .deroulement-intro {
+        font-family: var(--font-display);
+        font-weight: 600;
+        line-height: 1.2;
+        width: auto;
         max-width: 640px;
         margin: 0 auto;
         font-size: 1.4rem;

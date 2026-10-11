@@ -94,7 +94,38 @@
     right: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 2px;
+}
+
+// Pause / lecture du défilement automatique (pictogramme dessiné en CSS)
+.hero-pause {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: "";
+        width: 8px;
+        height: 10px;
+        border-left: 3px solid var(--white);
+        border-right: 3px solid var(--white);
+    }
+
+    &.is-paused::before {
+        width: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 9px solid var(--white);
+        border-right: none;
+    }
 }
 
 // Zone tactile 24px, pastille visible de 10px (background-clip sur le padding)

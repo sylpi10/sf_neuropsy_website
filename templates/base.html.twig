@@ -43,7 +43,7 @@
   <header class="site-header" id="top">
     <div class="nav-wrap">
       <a class="brand" href="{{ path('app_home') }}">
-        <img src="{{ asset('assets/images/brain.webp') }}" alt="Logo Emmanuelle Mir" class="brand-logo" width="40" height="40">
+        <img src="{{ asset('assets/images/brain.webp') }}" alt="" class="brand-logo" width="40" height="40">
         <span class="brand-name">Emmanuelle Mir<small>Psychologue &amp; Psychothérapeute</small></span>
       </a>
 
@@ -125,8 +125,8 @@
       <div class="footer-item">
         <h2>Pour prendre rendez-vous</h2>
         <ul class="footer-contact">
-          <li>{{ icon('phone') }} <a href="tel:{{ info and info.phone ? info.phone|replace({'.': ''}) : '0650576015' }}" title="Téléphone">{{ info and info.phone ? info.phone : '06.50.57.60.15' }}</a></li>
-          <li>{{ icon('envelope') }} <a href="mailto:{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}" title="E-mail">{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}</a></li>
+          <li>{{ icon('phone') }} <a href="tel:{{ info and info.phone ? info.phone|replace({'.': ''}) : '0650576015' }}">{{ info and info.phone ? info.phone : '06.50.57.60.15' }}</a></li>
+          <li>{{ icon('envelope') }} <a href="mailto:{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}">{{ info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' }}</a></li>
         </ul>
       </div>
     </div>
@@ -134,7 +134,7 @@
       Copyright &copy; 2020-{{ 'now'|date('Y') }} — <a href="https://sylvainpillet.com">S. Pillet</a>
       <span class="footer-sep">|</span><a href="{{ path('app_neuropsychologue_gap') }}">Neuropsychologue près de Gap</a>
       <span class="footer-sep">|</span><a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
-      <span class="footer-sep">|</span><a href="{{ asset('assets/documents/CONDITIONS_GENERALES_DE_VENTE.pdf') }}" target="_blank" rel="noopener">CGV</a>
+      <span class="footer-sep">|</span><a href="{{ asset('assets/documents/CONDITIONS_GENERALES_DE_VENTE.pdf') }}" target="_blank" rel="noopener">CGV<span class="visually-hidden"> (PDF, nouvel onglet)</span></a>
     </p>
   </footer>
 
