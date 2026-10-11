@@ -231,6 +231,9 @@
     .text2 .detail {
         display: flex;
         flex-direction: column;
+        // Largeur fixée : sinon le bloc s'élargit avec le texte d'une définition ouverte
+        width: 100%;
+        max-width: 700px;
 
         .who-intro {
             font-family: var(--font-display);
@@ -252,9 +255,9 @@
             gap: 14px;
 
             .text-wrap {
-                width: 80%;
+                width: 100%;
                 flex: none;
-                margin: 0 auto;
+                margin: 0;
 
                 @media (max-width: 768px) {
                     width: 100%;

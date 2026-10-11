@@ -1253,6 +1253,8 @@ main {
 .who .text2 .detail {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 700px;
 }
 .who .text2 .detail .who-intro {
   font-family: var(--font-display);
@@ -1273,9 +1275,9 @@ main {
   gap: 14px;
 }
 .who .text2 .detail ul .text-wrap {
-  width: 80%;
+  width: 100%;
   flex: none;
-  margin: 0 auto;
+  margin: 0;
 }
 @media (max-width: 768px) {
   .who .text2 .detail ul .text-wrap {
