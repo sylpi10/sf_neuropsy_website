@@ -13,6 +13,7 @@ class SitemapController extends AbstractController
         "app_neuropsy" => "0.8",
         "app_tcc" => "0.8",
         "app_cabinet" => "0.8",
+        "app_neuropsychologue_gap" => "0.8",
         "app_honoraires" => "0.6",
         "app_organisme_de_formation" => "0.6",
         "app_references" => "0.5",

@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% set info = site_info() %}
+{% set phone = info and info.phone ? info.phone : '06.50.57.60.15' %}
+{% set email = info and info.email ? info.email : 'emmanuellemir.psy@gmail.com' %}
+
+<div class="page-hero page-hero--local">
+  <h1>Neuropsychologue et thérapies TCC près de Gap</h1>
+</div>
+
+<div class="local container">
+  <section class="local-intro">
+    <p>
+      Emmanuelle Mir, psychologue spécialisée en neuropsychologie et psychothérapeute TCC, reçoit enfants, adolescents, adultes et personnes âgées à la Maison de santé de La Bâtie-Neuve, à une quinzaine de minutes de Gap.
+    </p>
+    <p>
+      Le cabinet accueille des patients de Gap, de Chorges, de la vallée de l'Avance et du reste des Hautes-Alpes, pour un bilan neuropsychologique comme pour un suivi en thérapie cognitive et comportementale.
+    </p>
+    <div class="local-actions">
+      <a class="btn btn-primary" href="tel:{{ phone|replace({'.': ''}) }}">{{ icon('phone') }} {{ phone }}</a>
+      <a class="btn btn-outline" href="{{ path('app_honoraires') }}">Voir les honoraires</a>
+    </div>
+  </section>
+
+  <section class="local-block">
+    <h2>Bilan neuropsychologique près de Gap</h2>
+    <p>
+      Le bilan neuropsychologique est une série de tests qui permet d'établir un profil cognitif : attention, mémoire, planification, langage écrit, raisonnement. Il participe au diagnostic, recherche l'origine des difficultés et débouche sur des préconisations concrètes pour l'école, le travail ou le quotidien.
+    </p>
+    <p>
+      Chez l'enfant, il répond aux questions posées par un échec scolaire, des difficultés à lire, écrire ou compter, un trouble de l'attention (TDA/H) ou un comportement qui interroge. Chez l'adulte et la personne âgée, il fait le point après un traumatisme crânien, un AVC ou dans le cadre d'une pathologie neurologique.
+    </p>
+    <p>
+      Le bilan se déroule en plusieurs temps : entretien, questionnaires, tests, puis restitution orale et écrite du compte rendu. Une réunion avec l'enseignant est possible.
+    </p>
+    <a class="local-link" href="{{ path('app_neuropsy') }}">En savoir plus sur les bilans neuropsychologiques</a>
+  </section>
+
+  <section class="local-block">
+    <h2>Thérapie cognitive et comportementale (TCC)</h2>
+    <p>
+      Les TCC sont des thérapies brèves, validées scientifiquement et recommandées par la Haute Autorité de Santé. Elles agissent sur les pensées, les émotions et les comportements, à partir d'objectifs définis ensemble et d'exercices entre les séances.
+    </p>
+    <p>
+      Elles s'adressent notamment aux personnes qui souffrent d'anxiété, d'attaques de panique, de phobies, de TOC, de dépression ou de burn-out. Une thérapie compte généralement entre 15 et 20 séances. Emmanuelle Mir est également formée à l'EMDR.
+    </p>
+    <a class="local-link" href="{{ path('app_tcc') }}">En savoir plus sur les TCC</a>
+  </section>
+
+  <section class="local-block">
+    <h2>Pour qui ?</h2>
+    <ul class="local-list">
+      <li>Les enfants et adolescents en difficulté à l'école, dans leurs apprentissages ou dans leur comportement.</li>
+      <li>Les adultes confrontés à l'anxiété, à une phobie, à une dépression ou à un épuisement professionnel.</li>
+      <li>Les personnes âgées et les adultes qui présentent des troubles de la mémoire ou une pathologie neurologique.</li>
+      <li>Les parents, aidants et professionnels, par les formations de l'organisme <a href="{{ path('app_organisme_de_formation') }}">Psycho-Parent-Alp</a>.</li>
+    </ul>
+  </section>
+
+  <section class="local-block">
+    <h2>Venir au cabinet depuis Gap</h2>
+    <p>
+      Le cabinet se trouve à la Maison de santé de La Bâtie-Neuve, sur l'axe Gap – Chorges – Embrun. Il se rejoint facilement depuis Gap, Chorges, La Rochette, Avançon, Montgardin ou Embrun.
+    </p>
+    <div class="local-practical">
+      <address>
+        {{ icon('map-marked-alt') }}
+        <p>Maison de santé<br>133 rue des Écoles<br>05230 La Bâtie-Neuve</p>
+      </address>
+      <div>
+        {{ icon('calendar') }}
+        <p>Consultations le lundi, mardi, jeudi et vendredi, ainsi que pendant les vacances scolaires.</p>
+      </div>
+    </div>
+    <p>
+      Des consultations à domicile sont possibles sur le secteur de Chorges.
+    </p>
+    <a class="local-link" href="{{ path('app_cabinet') }}">Voir le plan d'accès au cabinet</a>
+  </section>
+
+  <section class="local-facts">
+    <div class="local-fact">
+      <h2>Honoraires</h2>
+      <p>
+        Premier entretien et consultation individuelle : 70 euros. Bilans à partir de 250 euros, avec paiement possible en plusieurs fois. Certaines mutuelles prennent en charge une partie des séances.
+      </p>
+      <a class="local-link" href="{{ path('app_honoraires') }}">Tous les tarifs</a>
+    </div>
+    <div class="local-fact">
+      <h2>Emmanuelle Mir</h2>
+      <p>
+        Psychologue clinicienne, diplômée en thérapie comportementale et cognitive et en neuropsychopathologie des apprentissages scolaires. Membre de l'AFTCC.
+      </p>
+      <a class="local-link" href="{{ path('app_references') }}">Diplômes et expériences</a>
+    </div>
+  </section>
+
+  <section class="local-contact">
+    <h2>Prendre rendez-vous</h2>
+    <p>Les rendez-vous se prennent par téléphone ou par e-mail.</p>
+    <ul>
+      <li>{{ icon('phone') }} <a href="tel:{{ phone|replace({'.': ''}) }}">{{ phone }}</a></li>
+      <li>{{ icon('envelope') }} <a href="mailto:{{ email }}">{{ email }}</a></li>
+    </ul>
+  </section>
+</div>
+{% endblock %}

@@ -42,6 +42,19 @@ class PageController extends AbstractController
         ]);
     }
 
+    #[Route("/neuropsychologue-gap", name: "app_neuropsychologue_gap")]
+    public function neuropsychologueGap(): Response
+    {
+        return $this->render("pages/neuropsychologue_gap.html.twig", [
+            "seo" => [
+                "title" =>
+                    "Neuropsychologue près de Gap (05) – TCC | Emmanuelle Mir",
+                "description" =>
+                    "Neuropsychologue et psychothérapeute TCC à La Bâtie-Neuve, à 15 minutes de Gap : bilans neuropsychologiques, thérapies pour enfants, ados et adultes.",
+            ],
+        ]);
+    }
+
     #[Route("/honoraires", name: "app_honoraires")]
     public function honoraires(): Response
     {
