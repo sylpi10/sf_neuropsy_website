@@ -5,11 +5,6 @@ include .env.deploy
 export
 endif
 
-ifneq (,$(wildcard .env.deploy))
-include .env.deploy
-export
-endif
-
 RSYNC_EXCLUDES = \
 	--exclude node_modules/ \
 	--exclude vendor/ \
@@ -30,6 +25,7 @@ deploy:
 	ssh $(SERVER_USER)@$(SERVER_HOST) "\
 		cd $(SERVER_PATH) && \
 		composer install --no-dev --optimize-autoloader && \
+		php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration --env=prod && \
 		php bin/console cache:clear --env=prod \
 	"
 
@@ -57,7 +53,7 @@ composer i:
 	docker compose exec php composer install
 
 migrations:
-	docker compose exec php php bin/console doctrine:migrations:migrate
+	docker compose exec php php bin/console doctrine:migrations:migrate --no-interaction
 
 fixtures:
 	docker compose exec php php bin/console doctrine:fixtures:load
