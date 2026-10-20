@@ -70,7 +70,7 @@
       </address>
       <div>
         {{ icon('calendar') }}
-        <p>Consultations le lundi, mardi, jeudi et vendredi, ainsi que pendant les vacances scolaires.</p>
+        <p>Consultations le {{ open_days()|map(day => day.dayName|lower)|join_fr }}.{% if info and info.consultationNote %} {{ info.consultationNote|trim('.') }}.{% endif %}</p>
       </div>
     </div>
     <p>

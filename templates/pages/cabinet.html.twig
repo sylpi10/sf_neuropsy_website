@@ -17,13 +17,21 @@
 
   <div class="consult">
     <h2>Jours de consultations</h2>
+    {% set info = site_info() %}
     <ul>
-      <li>Lundi</li>
-      <li>Mardi</li>
-      <li>Jeudi</li>
-      <li>Vendredi</li>
-      <li>Vacances scolaires</li>
+      {% for day in open_days() %}
+      <li>{{ day.dayName }}{% if day.hours %} <span class="consult-hours">{{ day.hours }}</span>{% endif %}</li>
+      {% endfor %}
+      {% if info and info.consultationNote %}
+      <li>{{ info.consultationNote }}</li>
+      {% endif %}
     </ul>
+
+    {% for period in schedule_periods() %}
+    <div class="schedule-period{% if period.closed %} schedule-period--closed{% endif %}">
+      {{ include('partials/_schedule_period.html.twig') }}
+    </div>
+    {% endfor %}
   </div>
 
   <div class="maps">

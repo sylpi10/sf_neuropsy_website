@@ -1,0 +1,13 @@
+{# Une période exceptionnelle : "Cabinet fermé du 22 décembre 2026 au 4 janvier 2027" + message #}
+<p class="schedule-period-title">
+  <strong>{{ period.label }}</strong>&nbsp;:
+  {{ period.closed ? 'cabinet fermé' : 'jours et horaires aménagés' }}
+  {% if period.startDate == period.endDate %}
+    le {{ period.startDate|date_fr }}
+  {% else %}
+    du {{ period.startDate|date_fr }} au {{ period.endDate|date_fr }}
+  {% endif %}
+</p>
+{% if period.message %}
+  <p class="schedule-period-message">{{ period.message|nl2br }}</p>
+{% endif %}

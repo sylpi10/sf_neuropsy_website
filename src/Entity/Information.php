@@ -34,6 +34,10 @@ class Information
     #[ORM\Column(options: ['default' => false])]
     private bool $showQualiopi = false;
 
+    // Précision affichée sous les jours de consultation (ex : "Vacances scolaires")
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $consultationNote = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +123,18 @@ class Information
     public function setShowQualiopi(bool $showQualiopi): static
     {
         $this->showQualiopi = $showQualiopi;
+
+        return $this;
+    }
+
+    public function getConsultationNote(): ?string
+    {
+        return $this->consultationNote;
+    }
+
+    public function setConsultationNote(?string $consultationNote): static
+    {
+        $this->consultationNote = $consultationNote;
 
         return $this;
     }

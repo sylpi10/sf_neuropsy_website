@@ -25,6 +25,9 @@ class InformationCrudController extends AbstractCrudController
             TextField::new("postalCodeCity", "Code postal et ville"),
             TextField::new("phone", "Telephone"),
             TextField::new("email", "Email"),
+            TextField::new("consultationNote", "Précision jours de consultation")
+                ->setRequired(false)
+                ->setHelp("Affichée sous la liste des jours. Ex : Ouvert pendant les vacances scolaires"),
             BooleanField::new("showQualiopi", "Afficher les logos Qualiopi")->renderAsSwitch(false),
         ];
     }

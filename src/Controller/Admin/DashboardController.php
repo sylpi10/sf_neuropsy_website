@@ -6,6 +6,8 @@ use App\Entity\Category;
 use App\Entity\Fee;
 use App\Entity\Formation;
 use App\Entity\Information;
+use App\Entity\OpeningDay;
+use App\Entity\SchedulePeriod;
 use App\Entity\Slide;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -67,6 +69,16 @@ class DashboardController extends AbstractDashboardController
             "Categories de formations",
             "fa fa-folder-open",
             Category::class,
+        );
+        yield MenuItem::linkToCrud(
+            "Jours de consultation",
+            "fa fa-calendar-week",
+            OpeningDay::class,
+        );
+        yield MenuItem::linkToCrud(
+            "Fermetures / périodes",
+            "fa fa-calendar-xmark",
+            SchedulePeriod::class,
         );
         yield MenuItem::linkToCrud(
             "Honoraires",

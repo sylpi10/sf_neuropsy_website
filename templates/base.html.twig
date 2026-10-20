@@ -33,8 +33,16 @@
     "geo": {"@type": "GeoCoordinates", "latitude": 44.5666668, "longitude": 6.1925078},
     "areaServed": ["La Bâtie-Neuve", "Gap", "Briançon", "Hautes-Alpes"],
     "openingHoursSpecification": [
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday"]}
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": {{ open_days()|map(day => day.schemaDayName)|json_encode|raw }}}
     ]
+    {%- set closures = schedule_periods()|filter(period => period.closed) -%}
+    {%- if closures is not empty -%},
+    "specialOpeningHoursSpecification": [
+      {%- for period in closures %}
+      {"@type": "OpeningHoursSpecification", "validFrom": "{{ period.startDate|date('Y-m-d') }}", "validThrough": "{{ period.endDate|date('Y-m-d') }}", "opens": "00:00", "closes": "00:00"}{{ loop.last ? '' : ',' }}
+      {%- endfor %}
+    ]
+    {%- endif %}
   }
   </script>
 </head>
@@ -103,6 +111,16 @@
   </header>
 
   <main id="main-content">
+    {% set banners = banner_periods() %}
+    {% if banners is not empty %}
+    <div class="schedule-banner">
+      {% for period in banners %}
+      <div class="schedule-banner-item">
+        {{ include('partials/_schedule_period.html.twig') }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
     {% block body %}{% endblock %}
   </main>
 
