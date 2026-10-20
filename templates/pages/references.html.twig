@@ -6,74 +6,43 @@
 </div>
 
 <section class="references container">
+  {# Diplômes et expériences : admin > Références #}
+  {% if diplomas is not empty %}
   <h2 class="references-title">Diplômes</h2>
 
   <div class="diplomas-list">
-    <div class="diploma-item">
-      <h3>{{ icon('user-graduate') }} Psychologue Clinicienne</h3>
-      <p>
-        Master de Sciences Humaines et Sociales, Mention Psychologie Clinique, Major de promo
-        (Spécialité ATIE – Accompagnement des Troubles cognitifs et socio-cognitifs, des Inadaptations et des Exclusions).
-      </p>
-      <span class="location">{{ icon('map-marker-alt') }} Clermont-Ferrand</span>
+    {% for diploma in diplomas %}
+    <div class="diploma-item{% if diploma.wide %} diploma-item--wide{% endif %}">
+      <h3>{% if diploma.showIcon %}{{ icon('user-graduate') }} {% endif %}{{ diploma.title }}</h3>
+      {{ diploma.content|page_html }}
+      {% if diploma.location %}
+      <span class="location">{{ icon('map-marker-alt') }} {{ diploma.location }}</span>
+      {% endif %}
     </div>
-
-    <div class="diploma-item">
-      <h3>{{ icon('user-graduate') }} Psychothérapeute en Thérapie Comportementale et Cognitive</h3>
-      <p>Diplôme Inter-Universitaire de Thérapie Comportementale et Cognitive.</p>
-      <span class="location">{{ icon('map-marker-alt') }} Clermont-Ferrand et Saint-Étienne</span>
-    </div>
-
-    <div class="diploma-item">
-      <h3>Formations supplémentaires</h3>
-      <ul>
-        <li>Diplôme universitaire de neuropsychopathologie des apprentissages scolaires.</li>
-        <li>EMDR Niveau 1 et 2 (Institut d'EMDR FRANCE)</li>
-      </ul>
-      <span class="location">{{ icon('map-marker-alt') }} Lyon</span>
-    </div>
-
-    <div class="diploma-item">
-      <h3>Associations et réseaux</h3>
-      <ul>
-        <li>Présidente de l'association Positiv'être</li>
-        <li>Membre de l'AFTCC</li>
-      </ul>
-    </div>
-
-    <div class="diploma-item diploma-item--wide">
-      <h3>Thème de recherche</h3>
-      <p>Outils destinés aux enseignant·e·s et aux AVS du 1er degré intervenant auprès d'enfants présentant un trouble du déficit de l'attention avec ou sans hyperactivité (TDA/H).</p>
-    </div>
+    {% endfor %}
   </div>
+  {% endif %}
 
+  {% if current_experiences is not empty or past_experiences is not empty %}
   <h2 class="references-title">Expériences</h2>
 
+  {% for group in [{title: 'Actuelle', items: current_experiences}, {title: 'Antérieures', items: past_experiences}] %}
+    {% if group.items is not empty %}
   <div class="experience-item">
-    <h3>Actuelle</h3>
+    <h3>{{ group.title }}</h3>
     <ul>
-      <li>Psychologue en libérale et formatrice.</li>
-      <li>Gérante et fondatrice de l'organisme de formations « Psycho Parent Alp »</li>
+      {% for experience in group.items %}
+      <li>{{ experience.label }}</li>
+      {% endfor %}
     </ul>
   </div>
-
-  <div class="experience-item">
-    <h3>Antérieures</h3>
-    <ul>
-      <li>Problématiques de délinquances, addictives et sociales. Secteur social et judiciaire. (ADSEA 05)</li>
-      <li>Supervision d'équipe intervenant auprès d'un public présentant un trouble du spectre de l'autisme. (Association Positiv'être)</li>
-      <li>Psychologue au CEFP, adolescents et jeunes adultes (16-20 ans) placés/orientés par la PJJ et l'ASE.</li>
-      <li>Psychologue centre Jean Cluzel (5 ans).</li>
-      <li>Services ITEP, IME, SESSAD.</li>
-      <li>Public 3/20 ans. Profils déficience intellectuelle, trouble du comportement, des apprentissages, TSA.</li>
-      <li>Unité maternelle autisme. PEPADS. Secteur médico-social.</li>
-    </ul>
-  </div>
+    {% endif %}
+  {% endfor %}
+  {% endif %}
 
   <div class="references-footer">
     <h2>Immatriculations</h2>
-    <p>Numéro ADELI : 059301895</p>
-    <p>SIRET : 812 767 143 000 41</p>
+    {{ editable_text('references.immatriculations') }}
   </div>
 </section>
 {% endblock %}

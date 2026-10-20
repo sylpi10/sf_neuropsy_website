@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Diploma;
+use App\Entity\Experience;
 use App\Entity\EditableText;
 use App\Entity\Fee;
 use App\Entity\Formation;
@@ -76,6 +78,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud("Jours de consultation", "fa fa-calendar-week", OpeningDay::class);
         yield MenuItem::linkToCrud("Fermetures / périodes", "fa fa-calendar-xmark", SchedulePeriod::class);
         yield MenuItem::linkToCrud("Coordonnées et options", "fa fa-info-circle", Information::class);
+
+        yield MenuItem::section("Références");
+        yield MenuItem::linkToCrud("Diplômes", "fa fa-user-graduate", Diploma::class);
+        yield MenuItem::linkToCrud("Expériences", "fa fa-briefcase", Experience::class);
 
         yield MenuItem::section("Formations");
         yield MenuItem::linkToCrud("Formations", "fa fa-graduation-cap", Formation::class);

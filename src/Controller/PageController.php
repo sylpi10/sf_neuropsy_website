@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use App\Repository\DiplomaRepository;
+use App\Repository\ExperienceRepository;
 use App\Repository\FeeRepository;
 use App\Repository\FormationRepository;
 use App\Repository\SlideRepository;
@@ -99,9 +101,16 @@ class PageController extends AbstractController
     }
 
     #[Route("/references", name: "app_references")]
-    public function references(): Response
-    {
+    public function references(
+        DiplomaRepository $diplomaRepository,
+        ExperienceRepository $experienceRepository,
+    ): Response {
+        $experiences = $experienceRepository->findOrdered();
+
         return $this->render("pages/references.html.twig", [
+            "diplomas" => $diplomaRepository->findOrdered(),
+            "current_experiences" => array_filter($experiences, fn ($experience) => $experience->isCurrent()),
+            "past_experiences" => array_filter($experiences, fn ($experience) => !$experience->isCurrent()),
             "seo" => [
                 "title" =>
                     "Références et diplômes – Emmanuelle Mir, psychologue",
