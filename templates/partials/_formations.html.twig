@@ -23,7 +23,8 @@
       <h2>Les formations:</h2>
 
       <div class="formation-content">
-        <h3>Formations destinées aux parents, aux aidants et aux familles</h3>
+
+        <h3>{{aidantCategory.title}}</h3>
         <div class="formations-cards-wrapper">
           {% for formation in aidantFormations %}
             {% set is_coming = not formation.status %}
@@ -64,7 +65,7 @@
       </div>
 
       <div class="formation-content">
-        <h3>Formations destinées aux parents, aux professionnels</h3>
+        <h3>{{proCategory.title}}</h3>
         <div class="formations-cards-wrapper">
           {% for formation in proFormations %}
             {% set is_coming = not formation.status %}
