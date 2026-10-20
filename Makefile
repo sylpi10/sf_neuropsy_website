@@ -1,4 +1,4 @@
-.PHONY: deploy
+.PHONY: deploy deploy-test backup
 
 ifneq (,$(wildcard .env.deploy))
 include .env.deploy
@@ -16,9 +16,16 @@ RSYNC_EXCLUDES = \
 	--exclude Makefile \
 	--exclude docke/* \
 	--exclude tests/ \
+	--exclude scripts/ \
 	--exclude public/bundles/
 
-deploy:
+# Dump gzippé de la base de prod dans ~/backups/psytcc/ sur le serveur (15 derniers conservés).
+# Le script est envoyé par ssh : rien à installer côté serveur.
+backup:
+	ssh $(SERVER_USER)@$(SERVER_HOST) 'bash -s' -- "$(SERVER_PATH)" 15 < scripts/db-backup.sh
+
+# Le backup passe avant tout : s'il échoue, le déploiement s'arrête.
+deploy: backup
 	rsync -av --itemize-changes ./ $(SERVER_USER)@$(SERVER_HOST):~/$(SERVER_PATH) \
 		$(RSYNC_EXCLUDES)
 
