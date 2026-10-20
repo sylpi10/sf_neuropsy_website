@@ -8,6 +8,9 @@ use Twig\TwigFunction;
 
 class SiteInfoExtension extends AbstractExtension
 {
+    private ?object $siteInfo = null;
+    private bool $loaded = false;
+
     public function __construct(private readonly InformationRepository $informationRepository)
     {
     }
@@ -16,11 +19,22 @@ class SiteInfoExtension extends AbstractExtension
     {
         return [
             new TwigFunction('site_info', [$this, 'getSiteInfo']),
+            new TwigFunction('show_qualiopi', [$this, 'showQualiopi']),
         ];
     }
 
     public function getSiteInfo(): ?object
     {
-        return $this->informationRepository->findFirst();
+        if (!$this->loaded) {
+            $this->siteInfo = $this->informationRepository->findFirst();
+            $this->loaded = true;
+        }
+
+        return $this->siteInfo;
+    }
+
+    public function showQualiopi(): bool
+    {
+        return $this->getSiteInfo()?->isShowQualiopi() ?? false;
     }
 }

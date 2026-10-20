@@ -35,7 +35,7 @@ class Formation
     #[ORM\Column(options: ["default" => true])]
     private bool $status = true;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: "formations")]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 

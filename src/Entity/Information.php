@@ -31,6 +31,9 @@ class Information
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
+    #[ORM\Column(options: ['default' => false])]
+    private bool $showQualiopi = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Information
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function isShowQualiopi(): bool
+    {
+        return $this->showQualiopi;
+    }
+
+    public function setShowQualiopi(bool $showQualiopi): static
+    {
+        $this->showQualiopi = $showQualiopi;
 
         return $this;
     }

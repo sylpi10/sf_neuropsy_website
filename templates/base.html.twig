@@ -118,9 +118,11 @@
         </p>
       </address>
 
-      <!--<div class="footer-item footer-qualiopi">
+      {% if show_qualiopi() %}
+      <div class="footer-item footer-qualiopi">
         <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200" height="107">
-      </div>-->
+      </div>
+      {% endif %}
 
       <div class="footer-item">
         <h2>Pour prendre rendez-vous</h2>
