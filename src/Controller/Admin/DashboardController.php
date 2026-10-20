@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Fee;
 use App\Entity\Formation;
 use App\Entity\Information;
 use App\Entity\Slide;
@@ -66,6 +67,11 @@ class DashboardController extends AbstractDashboardController
             "Categories de formations",
             "fa fa-folder-open",
             Category::class,
+        );
+        yield MenuItem::linkToCrud(
+            "Honoraires",
+            "fa fa-euro-sign",
+            Fee::class,
         );
         yield MenuItem::linkToCrud(
             "Slider page d'accueil",

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use App\Repository\FeeRepository;
 use App\Repository\FormationRepository;
 use App\Repository\SlideRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,9 +59,10 @@ class PageController extends AbstractController
     }
 
     #[Route("/honoraires", name: "app_honoraires")]
-    public function honoraires(): Response
+    public function honoraires(FeeRepository $feeRepository): Response
     {
         return $this->render("pages/honoraires.html.twig", [
+            "fees" => $feeRepository->findOrdered(),
             "seo" => [
                 "title" =>
                     "Honoraires et remboursements – Emmanuelle Mir",
