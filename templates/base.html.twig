@@ -103,6 +103,12 @@
     </div>
     {% endif %}
     {% block body %}{% endblock %}
+
+    {# Sections ajoutées depuis l'admin à la fin d'une page du site (admin > Sections ajoutées aux pages) #}
+    {% set extra_blocks = site_page_blocks(app.request.attributes.get('_route')) %}
+    {% if extra_blocks is not empty %}
+      {{ include('partials/_page_blocks.html.twig', {blocks: extra_blocks, modifier: ' cms-page--appended'}) }}
+    {% endif %}
   </main>
 
   {% set info = site_info() %}

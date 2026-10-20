@@ -1,0 +1,23 @@
+{# Sections (PageBlock) : pages admin et contenus ajoutés aux pages du site #}
+<div class="cms-page{{ modifier|default('') }}">
+  {% for block in blocks %}
+    {% set has_image = block.imageName is not empty %}
+    {% set has_text = block.title or block.content|page_html|striptags|trim %}
+  <section{% if block.anchor %} id="{{ block.anchor }}"{% endif %} class="cms-section{% if has_image and has_text %} cms-section--image-{{ block.imagePosition }}{% elseif has_image %} cms-section--image-only{% endif %}">
+    {% if has_text %}
+    <div class="cms-section-text">
+      {% if block.title %}<h2>{{ block.title }}</h2>{% endif %}
+      {{ block.content|page_html }}
+    </div>
+    {% endif %}
+    {% if has_image %}
+    <figure class="cms-section-image">
+      <img src="{{ asset('uploads/pages/' ~ block.imageName) }}" alt="{{ block.imageAlt }}"
+        {%- if block.imageWidth %} width="{{ block.imageWidth }}" height="{{ block.imageHeight }}"{% endif %}
+        {#- La 1re image d'une page admin peut être visible d'emblée ; en fin de page du site, tout est différé -#}
+        {%- if not loop.first or modifier is defined %} loading="lazy"{% endif %} decoding="async">
+    </figure>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>

@@ -3,8 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Page;
-use App\Entity\PageBlock;
 use App\Service\ImageOptimizer;
+use App\Service\PageBlockProcessor;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -22,9 +22,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 class PageCrudController extends AbstractCrudController
 {
     private const HERO_MAX_WIDTH = 1920;
-    private const BLOCK_IMAGE_MAX_WIDTH = 1200;
 
-    public function __construct(private readonly ImageOptimizer $imageOptimizer) {}
+    public function __construct(
+        private readonly ImageOptimizer $imageOptimizer,
+        private readonly PageBlockProcessor $pageBlockProcessor,
+    ) {}
 
     public static function getEntityFqcn(): string
     {
@@ -35,7 +37,7 @@ class PageCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInSingular("Page")
-            ->setEntityLabelInPlural("Pages")
+            ->setEntityLabelInPlural("Pages créées")
             ->setDefaultSort(["title" => "ASC"])
             ->setHelp(
                 Crud::PAGE_INDEX,
@@ -46,7 +48,7 @@ class PageCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $view = Action::new("view", "Voir la page", "fa fa-eye")
-            ->linkToRoute("app_page", fn (Page $page) => ["slug" => $page->getSlug()])
+            ->linkToUrl(fn (Page $page) => $this->generateUrl("app_page", ["slug" => $page->getSlug()]))
             ->setHtmlAttributes(["target" => "_blank"]);
 
         return $actions
@@ -115,50 +117,15 @@ class PageCrudController extends AbstractCrudController
             return;
         }
 
-        $uploadDir = $this->getParameter("kernel.project_dir") . "/" . PageBlockCrudController::UPLOAD_DIR;
-
         if ($page->getHeroImageName()) {
+            $uploadDir = $this->getParameter("kernel.project_dir") . "/" . PageBlockCrudController::UPLOAD_DIR;
             $page->setHeroImageName(
                 $this->imageOptimizer->optimize($uploadDir, $page->getHeroImageName(), self::HERO_MAX_WIDTH),
             );
         }
 
-        foreach ($page->getBlocks() as $block) {
-            if (!$block->getImageName()) {
-                $block->setImageSize(null, null);
-                continue;
-            }
-
-            $block->setImageName(
-                $this->imageOptimizer->optimize($uploadDir, $block->getImageName(), self::BLOCK_IMAGE_MAX_WIDTH),
-            );
-            // Dimensions stockées pour les attributs width/height (pas de décalage de mise en page au chargement)
-            $size = @getimagesize($uploadDir . "/" . $block->getImageName());
-            $block->setImageSize($size[0] ?? null, $size[1] ?? null);
-        }
-
-        $this->renumberBlocks($page);
+        $this->pageBlockProcessor->process($page->getBlocks());
         // Force la mise à jour de updatedAt (sitemap) même si seules les sections ont changé
         $page->touch();
-    }
-
-    // Renumérote 10, 20, 30... : les sections sans ordre vont à la fin, dans l'ordre du formulaire
-    private function renumberBlocks(Page $page): void
-    {
-        $blocks = array_values($page->getBlocks()->toArray());
-        $indexed = array_map(null, $blocks, array_keys($blocks));
-
-        usort($indexed, static function (array $a, array $b): int {
-            [$blockA, $indexA] = $a;
-            [$blockB, $indexB] = $b;
-
-            return [$blockA->getPosition() ?? PHP_INT_MAX, $indexA]
-                <=> [$blockB->getPosition() ?? PHP_INT_MAX, $indexB];
-        });
-
-        foreach ($indexed as $i => [$block]) {
-            /** @var PageBlock $block */
-            $block->setPosition(($i + 1) * 10);
-        }
     }
 }

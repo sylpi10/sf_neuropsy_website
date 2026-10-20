@@ -99,3 +99,8 @@
     box-shadow: var(--shadow-soft);
   }
 }
+
+// Sections ajoutées à la fin d'une page du site : moins d'espace au-dessus (la page a déjà son contenu)
+.cms-page--appended {
+  padding-top: 20px;
+}

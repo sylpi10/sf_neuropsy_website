@@ -22,6 +22,8 @@ framework:
                     h3: []
                     h4: []
                     a: ['href', 'title']
+                # Balises retirées mais dont le texte est conservé (sinon tout le contenu disparaîtrait)
+                block_elements: ['span', 'address', 'pre', 'code', 'small', 'sup', 'sub', 'figure', 'figcaption', 'section', 'article', 'font']
                 allowed_link_schemes: ['http', 'https', 'mailto', 'tel']
                 allow_relative_links: true
                 force_https_urls: false

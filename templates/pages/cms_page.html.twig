@@ -11,25 +11,5 @@
   <h1>{{ page.title }}</h1>
 </div>
 
-<div class="cms-page">
-  {% for block in page.blocks %}
-    {% set has_image = block.imageName is not empty %}
-    {% set has_text = block.title or block.content|page_html|striptags|trim %}
-  <section class="cms-section{% if has_image and has_text %} cms-section--image-{{ block.imagePosition }}{% elseif has_image %} cms-section--image-only{% endif %}">
-    {% if has_text %}
-    <div class="cms-section-text">
-      {% if block.title %}<h2>{{ block.title }}</h2>{% endif %}
-      {{ block.content|page_html }}
-    </div>
-    {% endif %}
-    {% if has_image %}
-    <figure class="cms-section-image">
-      <img src="{{ asset('uploads/pages/' ~ block.imageName) }}" alt="{{ block.imageAlt }}"
-        {%- if block.imageWidth %} width="{{ block.imageWidth }}" height="{{ block.imageHeight }}"{% endif %}
-        {%- if not loop.first %} loading="lazy"{% endif %} decoding="async">
-    </figure>
-    {% endif %}
-  </section>
-  {% endfor %}
-</div>
+{{ include('partials/_page_blocks.html.twig', {blocks: page.blocks}) }}
 {% endblock %}

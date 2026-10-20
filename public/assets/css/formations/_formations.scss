@@ -136,6 +136,11 @@
       gap: 24px;
       align-items: flex-start;
 
+      // Texte modifiable dans l'admin (plusieurs paragraphes possibles) : un seul bloc à côté de l'image
+      .first-para-text {
+        flex: 1 1 auto;
+      }
+
       img {
         border-radius: var(--radius-lg);
         margin-bottom: 20px;

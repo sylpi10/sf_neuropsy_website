@@ -28,6 +28,9 @@ class PageBlockCrudController extends AbstractCrudController
                 ->setRequired(false)
                 ->setHelp("Ordre croissant. Laisser vide : la section est ajoutée à la fin."),
             TextField::new("title", "Intertitre (optionnel)")->setRequired(false),
+            TextField::new("anchor", "Ancre (optionnel)")
+                ->setRequired(false)
+                ->setHelp("Remplie automatiquement d'après l'intertitre à l'enregistrement. Pour un lien de menu qui descend jusqu'à cette section, recopiez-la dans le champ « Ancre » du menu."),
             TextEditorField::new("content", "Texte (optionnel)")->setRequired(false),
             ImageField::new("imageName", "Image (optionnelle)")
                 ->setBasePath(self::UPLOAD_BASE_PATH)

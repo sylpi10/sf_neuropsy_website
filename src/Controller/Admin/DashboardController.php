@@ -3,11 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\EditableText;
 use App\Entity\Fee;
 use App\Entity\Formation;
 use App\Entity\Information;
 use App\Entity\MenuItem as MenuItemEntity;
 use App\Entity\Page;
+use App\Entity\SitePageContent;
 use App\Entity\OpeningDay;
 use App\Entity\SchedulePeriod;
 use App\Entity\Slide;
@@ -62,51 +64,24 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard("Dashboard", "fa fa-home");
-        yield MenuItem::linkToCrud(
-            "Menu",
-            "fa fa-bars",
-            MenuItemEntity::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Pages",
-            "fa fa-file-lines",
-            Page::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Formations",
-            "fa fa-graduation-cap",
-            Formation::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Categories de formations",
-            "fa fa-folder-open",
-            Category::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Jours de consultation",
-            "fa fa-calendar-week",
-            OpeningDay::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Fermetures / périodes",
-            "fa fa-calendar-xmark",
-            SchedulePeriod::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Honoraires",
-            "fa fa-euro-sign",
-            Fee::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Slider page d'accueil",
-            "fa fa-images",
-            Slide::class,
-        );
-        yield MenuItem::linkToCrud(
-            "Informations footer",
-            "fa fa-info-circle",
-            Information::class,
-        );
+        yield MenuItem::section("Site");
+        yield MenuItem::linkToCrud("Menu", "fa fa-bars", MenuItemEntity::class);
+        yield MenuItem::linkToCrud("Textes des pages", "fa fa-pen-to-square", EditableText::class);
+        yield MenuItem::linkToCrud("Pages créées", "fa fa-file-lines", Page::class);
+        yield MenuItem::linkToCrud("Sections ajoutées aux pages", "fa fa-puzzle-piece", SitePageContent::class);
+        yield MenuItem::linkToCrud("Slider page d'accueil", "fa fa-images", Slide::class);
+
+        yield MenuItem::section("Infos pratiques");
+        yield MenuItem::linkToCrud("Honoraires", "fa fa-euro-sign", Fee::class);
+        yield MenuItem::linkToCrud("Jours de consultation", "fa fa-calendar-week", OpeningDay::class);
+        yield MenuItem::linkToCrud("Fermetures / périodes", "fa fa-calendar-xmark", SchedulePeriod::class);
+        yield MenuItem::linkToCrud("Coordonnées et options", "fa fa-info-circle", Information::class);
+
+        yield MenuItem::section("Formations");
+        yield MenuItem::linkToCrud("Formations", "fa fa-graduation-cap", Formation::class);
+        yield MenuItem::linkToCrud("Catégories de formations", "fa fa-folder-open", Category::class);
+
+        yield MenuItem::section("Compte");
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
         $changePasswordUrl = $adminUrlGenerator
             ->setRoute("admin_account_password")

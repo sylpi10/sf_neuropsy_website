@@ -9,7 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
- * Section d'une Page : intertitre, texte et image, tous optionnels.
+ * Section d'une Page admin, ou d'un contenu ajouté à une page du site (SitePageContent) :
+ * intertitre, texte et image, tous optionnels.
  * Texte seul = bloc texte, image seule = bloc image, les deux = texte + image.
  */
 #[ORM\Entity(repositoryClass: PageBlockRepository::class)]
@@ -25,14 +26,23 @@ class PageBlock
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'blocks')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
     private ?Page $page = null;
+
+    #[ORM\ManyToOne(inversedBy: 'blocks')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    private ?SitePageContent $sitePageContent = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $position = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
+
+    // id HTML de la section, pour y descendre depuis le menu (page#ancre). Rempli d'après l'intertitre si vide.
+    #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\Regex(pattern: '/^[a-z0-9]+(?:-[a-z0-9]+)*$/', message: 'Uniquement des minuscules, chiffres et tirets (ex : emdr).')]
+    private ?string $anchor = null;
 
     // HTML de l'éditeur, nettoyé à l'affichage (filtre page_html)
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -81,6 +91,18 @@ class PageBlock
         return $this;
     }
 
+    public function getSitePageContent(): ?SitePageContent
+    {
+        return $this->sitePageContent;
+    }
+
+    public function setSitePageContent(?SitePageContent $sitePageContent): static
+    {
+        $this->sitePageContent = $sitePageContent;
+
+        return $this;
+    }
+
     public function getPosition(): ?int
     {
         return $this->position;
@@ -101,6 +123,18 @@ class PageBlock
     public function setTitle(?string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getAnchor(): ?string
+    {
+        return $this->anchor;
+    }
+
+    public function setAnchor(?string $anchor): static
+    {
+        $this->anchor = $anchor;
 
         return $this;
     }

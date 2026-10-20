@@ -4,6 +4,7 @@ namespace App\EventListener;
 
 use App\Entity\Page;
 use App\Entity\PageBlock;
+use App\Entity\SitePageContent;
 use App\Entity\Slide;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\Events;
@@ -15,6 +16,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
  */
 #[AsEntityListener(event: Events::postRemove, method: 'removePageImages', entity: Page::class)]
 #[AsEntityListener(event: Events::postRemove, method: 'removeBlockImage', entity: PageBlock::class)]
+#[AsEntityListener(event: Events::postRemove, method: 'removeSitePageContentImages', entity: SitePageContent::class)]
 #[AsEntityListener(event: Events::postRemove, method: 'removeSlideImages', entity: Slide::class)]
 class UploadedImageCleanupListener
 {
@@ -30,6 +32,13 @@ class UploadedImageCleanupListener
 
         // Sections supprimées en cascade par la base (ON DELETE CASCADE) : pas d'événement Doctrine pour elles
         foreach ($page->getBlocks() as $block) {
+            $this->remove('pages', $block->getImageName());
+        }
+    }
+
+    public function removeSitePageContentImages(SitePageContent $content): void
+    {
+        foreach ($content->getBlocks() as $block) {
             $this->remove('pages', $block->getImageName());
         }
     }

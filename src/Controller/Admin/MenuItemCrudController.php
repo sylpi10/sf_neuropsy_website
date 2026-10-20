@@ -101,7 +101,7 @@ class MenuItemCrudController extends AbstractCrudController
         yield TextField::new("anchor", "Ancre (optionnel)")
             ->setRequired(false)
             ->hideOnIndex()
-            ->setHelp("Pour descendre directement à une section de la page, ex : bilans (sans #).");
+            ->setHelp("Pour descendre directement à une section de la page, ex : bilans (sans #). Pour une section ajoutée depuis l'admin, son ancre est indiquée dans le formulaire de la section.");
         yield UrlField::new("url", "Adresse externe")
             ->setRequired(false)
             ->hideOnIndex();
