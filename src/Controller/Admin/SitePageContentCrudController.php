@@ -8,6 +8,8 @@ use App\Service\PageBlockProcessor;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Asset;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -33,6 +35,15 @@ class SitePageContentCrudController extends AbstractCrudController
                 Crud::PAGE_INDEX,
                 "Sections (texte, image) ajoutées à la fin d'une page existante du site, sous son contenu actuel.",
             );
+    }
+
+    // L'éditeur de texte est dans les sections (CollectionField) : EasyAdmin ne charge pas ses fichiers
+    // tout seul dans ce cas, et le champ "Texte" s'afficherait sans zone de saisie.
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            ->addCssFile(Asset::fromEasyAdminAssetPackage("field-text-editor.css")->onlyOnForms())
+            ->addJsFile(Asset::fromEasyAdminAssetPackage("field-text-editor.js")->onlyOnForms());
     }
 
     public function configureActions(Actions $actions): Actions
