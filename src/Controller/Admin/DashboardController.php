@@ -6,6 +6,8 @@ use App\Entity\Category;
 use App\Entity\Fee;
 use App\Entity\Formation;
 use App\Entity\Information;
+use App\Entity\MenuItem as MenuItemEntity;
+use App\Entity\Page;
 use App\Entity\OpeningDay;
 use App\Entity\SchedulePeriod;
 use App\Entity\Slide;
@@ -60,6 +62,16 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard("Dashboard", "fa fa-home");
+        yield MenuItem::linkToCrud(
+            "Menu",
+            "fa fa-bars",
+            MenuItemEntity::class,
+        );
+        yield MenuItem::linkToCrud(
+            "Pages",
+            "fa fa-file-lines",
+            Page::class,
+        );
         yield MenuItem::linkToCrud(
             "Formations",
             "fa fa-graduation-cap",

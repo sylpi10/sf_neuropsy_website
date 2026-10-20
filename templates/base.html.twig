@@ -60,51 +60,32 @@
       </button>
 
       <nav class="primary-nav" id="primaryNav">
+        {# Menu géré dans l'admin (Menu) : un élément avec des sous-éléments devient un menu déroulant #}
+        {% set current_path = app.request.pathInfo %}
         <ul>
-          <li><a href="{{ path('app_home') }}">Accueil</a></li>
-
+          {% for item in menu_items() %}
+            {% set children = item.visibleChildren %}
+            {% if children is not empty %}
           <li class="has-dropdown">
-            <button type="button" class="dropdown-toggle" aria-expanded="false">
-              Neuropsychologie {{ icon('chevron-down') }}
+            <button type="button" class="dropdown-toggle{% if item.highlighted %} formation-navlink{% endif %}" aria-expanded="false">
+              {{ item.label }} {{ icon('chevron-down') }}
             </button>
             <ul class="dropdown-menu">
-              <li><a href="{{ path('app_neuropsy') }}">Définition</a></li>
-              <li><a href="{{ path('app_neuropsy') }}#pour-qui">Pour qui ?</a></li>
-              <li><a href="{{ path('app_neuropsy') }}#bilans">Les bilans</a></li>
-              <li><a href="{{ path('app_neuropsy') }}#deroulement">Le déroulement</a></li>
-              <li><a href="{{ path('app_neuropsy') }}#durée">La durée</a></li>
-              <li><a href="{{ path('app_neuropsy') }}#remédiation-cognitive">La remédiation cognitive</a></li>
+              {% for child in children %}
+                {% set url = menu_url(child) %}
+                {% if url %}
+              <li><a href="{{ url }}"{% if url == current_path %} aria-current="page"{% endif %}{% if child.highlighted %} class="formation-navlink"{% endif %}>{{ child.label }}</a></li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </li>
-
-          <li class="has-dropdown">
-            <button type="button" class="dropdown-toggle" aria-expanded="false">
-              Les T.C.C {{ icon('chevron-down') }}
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="{{ path('app_tcc') }}#definition">Définition des T.C.C</a></li>
-              <li><a href="{{ path('app_tcc') }}#les-techniques">Les techniques</a></li>
-              <li><a href="{{ path('app_tcc') }}#pour-qui">Pour qui ?</a></li>
-              <li><a href="{{ path('app_tcc') }}#déroulement">Le déroulement</a></li>
-            </ul>
-          </li>
-
-          <li><a href="{{ path('app_honoraires') }}">Honoraires</a></li>
-
-          <li class="has-dropdown">
-            <button type="button" class="dropdown-toggle formation-navlink" aria-expanded="false">
-              Se former {{ icon('chevron-down') }}
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="{{ path('app_organisme_de_formation') }}#organisme-de-formation">Organisme de formation</a></li>
-              <li><a href="{{ path('app_organisme_de_formation') }}#formations">Les formations</a></li>
-              <li><a href="{{ path('app_organisme_de_formation') }}#inscriptions">Inscriptions</a></li>
-              <li><a href="{{ path('app_organisme_de_formation') }}#conditions-generales">Informations pratiques</a></li>
-            </ul>
-          </li>
-
-          <li><a href="{{ path('app_references') }}">Références</a></li>
-          <li><a href="{{ path('app_cabinet') }}">Le cabinet</a></li>
+            {% else %}
+              {% set url = menu_url(item) %}
+              {% if url %}
+          <li><a href="{{ url }}"{% if url == current_path %} aria-current="page"{% endif %}{% if item.highlighted %} class="formation-navlink"{% endif %}>{{ item.label }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
         </ul>
       </nav>
     </div>

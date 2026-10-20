@@ -83,6 +83,8 @@ class ImageOptimizer
             return $fileName;
         }
 
+        @chmod($targetPath, 0644);
+
         if ($targetPath !== $sourcePath) {
             @unlink($sourcePath);
         }

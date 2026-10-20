@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -21,13 +22,22 @@ class SitemapController extends AbstractController
     ];
 
     #[Route("/sitemap.xml", name: "app_sitemap", format: "xml")]
-    public function sitemap(): Response
+    public function sitemap(PageRepository $pageRepository): Response
     {
         $urls = [];
         foreach (self::PAGES as $route => $priority) {
             $urls[] = [
                 "path" => $this->generateUrl($route),
                 "priority" => $priority,
+            ];
+        }
+
+        // Pages créées dans l'admin (publiées uniquement)
+        foreach ($pageRepository->findPublished() as $page) {
+            $urls[] = [
+                "path" => $this->generateUrl("app_page", ["slug" => $page->getSlug()]),
+                "priority" => "0.6",
+                "lastmod" => $page->getUpdatedAt()?->format("Y-m-d"),
             ];
         }
 

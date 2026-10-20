@@ -1,0 +1,28 @@
+framework:
+    html_sanitizer:
+        sanitizers:
+            # Contenu saisi dans l'éditeur de texte des pages (admin > Pages)
+            app.page_content:
+                allow_safe_elements: false
+                allow_elements:
+                    p: []
+                    br: []
+                    div: []
+                    strong: []
+                    b: []
+                    em: []
+                    i: []
+                    u: []
+                    del: []
+                    ul: []
+                    ol: []
+                    li: []
+                    blockquote: []
+                    h2: []
+                    h3: []
+                    h4: []
+                    a: ['href', 'title']
+                allowed_link_schemes: ['http', 'https', 'mailto', 'tel']
+                allow_relative_links: true
+                force_https_urls: false
+                max_input_length: 100000

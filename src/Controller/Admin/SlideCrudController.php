@@ -16,7 +16,7 @@ class SlideCrudController extends AbstractCrudController
 {
     private const UPLOAD_BASE_PATH = "uploads/slides";
     private const UPLOAD_DIR = "public/uploads/slides";
-    private const FILE_NAME_PATTERN = "[slug]-[uniqid].[extension]";
+    private const FILE_NAME_PATTERN = "[slug]-[ulid].[extension]";
     private const MAX_WIDTH = 1920;
     private const MAX_WIDTH_MOBILE = 900;
 
