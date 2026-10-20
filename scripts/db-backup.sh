@@ -43,8 +43,11 @@ mkdir -p "$BACKUP_DIR"
 chmod 700 "$BACKUP_DIR"
 OUT="$BACKUP_DIR/${DB_NAME}_$(date +%Y-%m-%d_%H%M%S).sql.gz"
 
+# mariadb-dump sur MariaDB récent (mysqldump y est déprécié), mysqldump sinon
+DUMP="$(command -v mariadb-dump || command -v mysqldump)"
+
 # --no-tablespaces : évite l'erreur de privilège PROCESS sur les hébergements mutualisés
-mysqldump --defaults-extra-file="$CNF" --single-transaction --no-tablespaces --routines --triggers "$DB_NAME" | gzip > "$OUT"
+"$DUMP" --defaults-extra-file="$CNF" --single-transaction --no-tablespaces --routines --triggers "$DB_NAME" | gzip > "$OUT"
 DONE=1
 chmod 600 "$OUT"
 
