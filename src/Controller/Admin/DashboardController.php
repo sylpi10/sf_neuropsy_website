@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\Formation;
 use App\Entity\Information;
+use App\Entity\Slide;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -65,6 +66,11 @@ class DashboardController extends AbstractDashboardController
             "Categories de formations",
             "fa fa-folder-open",
             Category::class,
+        );
+        yield MenuItem::linkToCrud(
+            "Slider page d'accueil",
+            "fa fa-images",
+            Slide::class,
         );
         yield MenuItem::linkToCrud(
             "Informations footer",

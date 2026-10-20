@@ -1,42 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block preload %}
-  <link rel="preload" as="image" href="{{ asset('assets/images/tcc/hero-mobile.webp') }}" media="(max-width: 768px)" fetchpriority="high" type="image/webp">
-  <link rel="preload" as="image" href="{{ asset('assets/images/tcc/hero.webp') }}" media="(min-width: 769px)" fetchpriority="high" type="image/webp">
+  {% if slides is not empty %}
+    {% set first = slides|first %}
+    {% set first_img = asset('uploads/slides/' ~ first.imageName) %}
+    {% set first_img_mobile = first.mobileImageName ? asset('uploads/slides/' ~ first.mobileImageName) : first_img %}
+    {# Slide 1 = candidate LCP : préchargée et posée en CSS ; les suivantes sont chargées en différé par main.js #}
+    {% if first.mobileImageName %}
+      <link rel="preload" as="image" href="{{ first_img_mobile }}" media="(max-width: 768px)" fetchpriority="high">
+      <link rel="preload" as="image" href="{{ first_img }}" media="(min-width: 769px)" fetchpriority="high">
+    {% else %}
+      <link rel="preload" as="image" href="{{ first_img }}" fetchpriority="high">
+    {% endif %}
+    <style>
+      .hero-slide--first { background-image: url("{{ first_img }}"); }
+      @media (max-width: 768px) { .hero-slide--first { background-image: url("{{ first_img_mobile }}"); } }
+    </style>
+  {% endif %}
 {% endblock %}
 
 {% block body %}
+{% if slides is not empty %}
 <section class="hero-slider" aria-roledescription="carrousel" aria-label="Présentation du cabinet">
-  <div class="hero-slide hero-slide--1 is-active">
+  {% for slide in slides %}
+    {% if loop.first %}
+  <div class="hero-slide hero-slide--first is-active">
+    {% else %}
+  <div class="hero-slide" data-bg="{{ asset('uploads/slides/' ~ slide.imageName) }}"{% if slide.mobileImageName %} data-bg-mobile="{{ asset('uploads/slides/' ~ slide.mobileImageName) }}"{% endif %}>
+    {% endif %}
     <div class="hero-caption">
-      <h1>Cabinet de psychologie<br>Emmanuelle Mir</h1>
-      <p class="hero-subtitle">Psychologue, spécialisée en neuropsychologie, psychothérapeute TCC – EMDR<br>À La Bâtie-Neuve</p>
+      {% if loop.first %}
+      <h1>{{ slide.title|nl2br }}</h1>
+      {% else %}
+      <h2>{{ slide.title|nl2br }}</h2>
+      {% endif %}
+      {% if slide.text %}
+      <p class="hero-subtitle">{{ slide.text|nl2br }}</p>
+      {% endif %}
     </div>
   </div>
-  <div class="hero-slide hero-slide--2" data-bg="{{ asset('assets/images/tcc/girl.webp') }}">
-    <div class="hero-caption">
-      <h2>Spécialisée en neuropsychologie des troubles des apprentissages</h2>
-    </div>
-  </div>
-  <div class="hero-slide hero-slide--3" data-bg="{{ asset('assets/images/tcc/unhappy.webp') }}">
-    <div class="hero-caption">
-      <h2>Spécialisée en T.C.C<br>Thérapie Comportementale et Cognitive</h2>
-    </div>
-  </div>
-  <div class="hero-slide hero-slide--4" data-bg="{{ asset('assets/images/tcc/beach.webp') }}">
-    <div class="hero-caption">
-      <h2>Prise en charge enfants, adultes et personnes âgées</h2>
-      <address>Maison de santé, 133 rue des Écoles, 05230 La Bâtie-Neuve</address>
-    </div>
-  </div>
+  {% endfor %}
+  {% if slides|length > 1 %}
   <div class="hero-dots">
     <button class="hero-pause" type="button" aria-label="Mettre le défilement en pause"></button>
-    <button class="hero-dot is-active" type="button" aria-label="Diapositive 1" aria-current="true"></button>
-    <button class="hero-dot" type="button" aria-label="Diapositive 2"></button>
-    <button class="hero-dot" type="button" aria-label="Diapositive 3"></button>
-    <button class="hero-dot" type="button" aria-label="Diapositive 4"></button>
+    {% for slide in slides %}
+    <button class="hero-dot{% if loop.first %} is-active{% endif %}" type="button" aria-label="Diapositive {{ loop.index }}"{% if loop.first %} aria-current="true"{% endif %}></button>
+    {% endfor %}
   </div>
+  {% endif %}
 </section>
+{% else %}
+<h1 class="visually-hidden">Cabinet de psychologie Emmanuelle Mir</h1>
+{% endif %}
 
 <section class="home-intro container">
   <div class="home-intro-head">

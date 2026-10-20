@@ -90,11 +90,15 @@ function initHeader() {
 
 function loadDeferredSlides(slides) {
   function apply() {
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
     slides.forEach(function (slide) {
       var bg = slide.getAttribute('data-bg');
       if (!bg) return;
+      var bgMobile = slide.getAttribute('data-bg-mobile');
+      if (bgMobile && isMobile) bg = bgMobile;
       slide.style.backgroundImage = 'url("' + bg + '")';
       slide.removeAttribute('data-bg');
+      slide.removeAttribute('data-bg-mobile');
     });
   }
 

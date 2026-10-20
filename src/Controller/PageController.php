@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\FormationRepository;
+use App\Repository\SlideRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,9 +12,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class PageController extends AbstractController
 {
     #[Route("/", name: "app_home")]
-    public function home(): Response
+    public function home(SlideRepository $slideRepository): Response
     {
         return $this->render("pages/index.html.twig", [
+            "slides" => $slideRepository->findOrdered(),
             "seo" => [
                 "title" =>
                     "Neuropsychologue La Bâtie-Neuve (05) – TCC | Emmanuelle Mir",
