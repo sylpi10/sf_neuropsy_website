@@ -5,10 +5,10 @@
         {{ editable_text('formation.organisme.intro') }}
         {% if show_qualiopi() %}
         <div class="qualiopi-wrapper">
-          <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="logo certification qualiopi" width="240" height="128">
+          <img src="{{ asset('images/qualiopi.webp') }}" alt="logo certification qualiopi" width="240" height="128">
           <div class="qualiopi-text">
             <p>ORGANISME DE FORMATION CERTIFIEE QUALIOPI: &nbsp; &nbsp;</p>
-            <a class="download-link" href="{{ asset('assets/documents/Certificat_Qualiopi.pdf') }}" download> {{ icon('download') }} Télécharger le certificat</a>
+            <a class="download-link" href="{{ asset('documents/Certificat_Qualiopi.pdf') }}" download> {{ icon('download') }} Télécharger le certificat</a>
           </div>
         </div>
         {% endif %}
@@ -28,13 +28,13 @@
               </svg></h2>
             {{ editable_text('formation.organisme.contact') }}
           </div>
-          <img src="{{ asset('assets/images/formation/alps_pic2.webp') }}" alt="" width="400">
+          <img src="{{ asset('images/formation/alps_pic2.webp') }}" alt="" width="400">
         </div>
       </div>
     </div>
 
     <div class="reclamation-wrapper">
-      <img src="{{ asset('assets/images/formation/questions.webp') }}" alt="" width="200">
+      <img src="{{ asset('images/formation/questions.webp') }}" alt="" width="200">
       <div class="text">
         <h2> Suggestion, remarque, réclamation :</h2>
         {{ editable_text('formation.organisme.reclamation') }}

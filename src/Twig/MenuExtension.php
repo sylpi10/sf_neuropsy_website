@@ -9,11 +9,12 @@ use App\Repository\SitePageContentRepository;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Contracts\Service\ResetInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class MenuExtension extends AbstractExtension
+class MenuExtension extends AbstractExtension implements ResetInterface
 {
     /** @var MenuItem[]|null */
     private ?array $menu = null;
@@ -119,5 +120,12 @@ class MenuExtension extends AbstractExtension
         $html = str_replace(['<div>', '</div>'], ['<p>', '</p>'], $html);
 
         return preg_replace('#<p>(\s|<br\s*/?>|&nbsp;)*</p>#i', '', $html);
+    }
+
+    // Caches de la requête en cours : vidés entre deux requêtes si PHP reste en mémoire (FrankenPHP en mode worker)
+    public function reset(): void
+    {
+        $this->menu = null;
+        $this->texts = null;
     }
 }

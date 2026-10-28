@@ -1,4 +1,4 @@
-.PHONY: deploy deploy-test backup
+.PHONY: deploy deploy-test backup build-front
 
 ifneq (,$(wildcard .env.deploy))
 include .env.deploy
@@ -17,7 +17,8 @@ RSYNC_EXCLUDES = \
 	--exclude docke/* \
 	--exclude tests/ \
 	--exclude scripts/ \
-	--exclude public/bundles/
+	--exclude public/bundles/ \
+	--exclude public/assets/
 
 # Dump gzippé de la base de prod dans ~/backups/psytcc/ sur le serveur (15 derniers conservés).
 # Le script est envoyé par ssh : rien à installer côté serveur.
@@ -25,7 +26,8 @@ backup:
 	ssh $(SERVER_USER)@$(SERVER_HOST) 'bash -s' -- "$(SERVER_PATH)" 15 < scripts/db-backup.sh
 
 # Le backup passe avant tout : s'il échoue, le déploiement s'arrête.
-deploy: backup
+# assets/vendor/ (librairies JS de l'importmap) est envoyé par rsync : installé en local par build-front.
+deploy: backup build-front
 	rsync -av --itemize-changes ./ $(SERVER_USER)@$(SERVER_HOST):~/$(SERVER_PATH) \
 		$(RSYNC_EXCLUDES)
 
@@ -33,8 +35,15 @@ deploy: backup
 		cd $(SERVER_PATH) && \
 		composer install --no-dev --optimize-autoloader && \
 		php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration --env=prod && \
-		php bin/console cache:clear --env=prod \
+		php bin/console cache:clear --env=prod && \
+		php bin/console asset-map:compile --env=prod \
 	"
+
+# Librairies JS de l'importmap (assets/vendor/) et CSS compilé
+build-front:
+	php bin/console importmap:install
+	npm install --no-audit --no-fund
+	npm run sass:build
 
 deploy-test:
 	rsync -av --itemize-changes --dry-run ./ $(SERVER_USER)@$(SERVER_HOST):~/$(SERVER_PATH) \

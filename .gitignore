@@ -13,5 +13,10 @@
 
 ###> front-end (sass) ###
 /node_modules/
-/public/assets/css/*.css.map
+/assets/styles/*.css.map
 ###< front-end (sass) ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###

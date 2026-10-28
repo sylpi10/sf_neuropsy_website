@@ -10,7 +10,7 @@
 
       <div class="text">
         <h3 class="text-title">1 inscription</h3>
-        <p>- Remplir le bulletin d’inscription à télécharcher : <a class="download-link" href="{{ asset('assets/documents/BULLETIN_D_INSCRIPTION_AUX_FORMATIONS.pdf') }}" download> {{ icon('download') }} Télécharger le bulletin</a> </p>
+        <p>- Remplir le bulletin d’inscription à télécharcher : <a class="download-link" href="{{ asset('documents/BULLETIN_D_INSCRIPTION_AUX_FORMATIONS.pdf') }}" download> {{ icon('download') }} Télécharger le bulletin</a> </p>
         {{ editable_text('formation.inscription.etape1') }}
       </div>
 
@@ -38,7 +38,7 @@
       </div>
 
       {% if show_qualiopi() %}
-      <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="logo certification qualiopi" width="240">
+      <img src="{{ asset('images/qualiopi.webp') }}" alt="logo certification qualiopi" width="240">
       {% endif %}
     </div>
   </div>

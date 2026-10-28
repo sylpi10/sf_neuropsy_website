@@ -3,10 +3,11 @@
 namespace App\Twig;
 
 use App\Repository\InformationRepository;
+use Symfony\Contracts\Service\ResetInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class SiteInfoExtension extends AbstractExtension
+class SiteInfoExtension extends AbstractExtension implements ResetInterface
 {
     private ?object $siteInfo = null;
     private bool $loaded = false;
@@ -36,5 +37,12 @@ class SiteInfoExtension extends AbstractExtension
     public function showQualiopi(): bool
     {
         return $this->getSiteInfo()?->isShowQualiopi() ?? false;
+    }
+
+    // Caches de la requête en cours : vidés entre deux requêtes si PHP reste en mémoire (FrankenPHP en mode worker)
+    public function reset(): void
+    {
+        $this->siteInfo = null;
+        $this->loaded = false;
     }
 }

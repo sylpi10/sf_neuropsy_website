@@ -5,10 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="1xsG3jwxALfLukgMmEtq0CITmIf-Ce3lbgR2Qm4fMdM" />
   <meta name="google-site-verification" content="YoXWOjbcpymHCzSe6C8QDCQkfz8pZpuflG7D_nCb7WQ" />
-  <link rel="preload" as="font" type="font/woff2" href="{{ asset('assets/fonts/inter-latin.woff2') }}" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="{{ asset('assets/fonts/fraunces-latin.woff2') }}" crossorigin>
-  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/inter-latin.woff2') }}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{{ asset('fonts/fraunces-latin.woff2') }}" crossorigin>
+  <link rel="stylesheet" href="{{ asset('styles/style.css') }}" data-turbo-track="reload">
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
+  {# Navigation Turbo (assets/app.js) : fondu entre les pages (View Transitions, voir _turbo.scss) #}
+  <meta name="view-transition" content="same-origin">
+  {% block importmap %}{{ importmap('app') }}{% endblock %}
   {% block preload %}{% endblock %}
   {% include 'partials/_seo.html.twig' %}
   <script type="application/ld+json">
@@ -18,7 +22,7 @@
     "@id": "{{ site_url }}/#cabinet",
     "name": "Emmanuelle Mir – Psychologue & Neuropsychologue",
     "url": "{{ site_url }}/",
-    "image": "{{ site_url ~ asset('assets/images/og-default.jpg') }}",
+    "image": "{{ site_url ~ asset('images/og-default.jpg') }}",
     "telephone": "+33650576015",
     "email": "emmanuellemir.psy@gmail.com",
     "medicalSpecialty": "Psychiatric",
@@ -48,26 +52,28 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
-  <header class="site-header" id="top">
+  <header class="site-header" id="top" data-controller="menu"
+          data-action="scroll@window->menu#onScroll click@document->menu#clickOutside keydown.esc@document->menu#escape turbo:before-cache@document->menu#close">
     <div class="nav-wrap">
       <a class="brand" href="{{ path('app_home') }}">
-        <img src="{{ asset('assets/images/brain.webp') }}" alt="" class="brand-logo" width="40" height="40">
+        <img src="{{ asset('images/brain.webp') }}" alt="" class="brand-logo" width="40" height="40">
         <span class="brand-name">Emmanuelle Mir<small>Psychologue &amp; Psychothérapeute</small></span>
       </a>
 
-      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Ouvrir le menu">
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Ouvrir le menu"
+              data-menu-target="toggle" data-action="menu#toggle">
         <span></span><span></span><span></span>
       </button>
 
-      <nav class="primary-nav" id="primaryNav">
+      <nav class="primary-nav" id="primaryNav" data-menu-target="nav">
         {# Menu géré dans l'admin (Menu) : un élément avec des sous-éléments devient un menu déroulant #}
         {% set current_path = app.request.pathInfo %}
         <ul>
           {% for item in menu_items() %}
             {% set children = item.visibleChildren %}
             {% if children is not empty %}
-          <li class="has-dropdown">
-            <button type="button" class="dropdown-toggle{% if item.highlighted %} formation-navlink{% endif %}" aria-expanded="false">
+          <li class="has-dropdown" data-action="mouseenter->menu#hoverIn mouseleave->menu#hoverOut">
+            <button type="button" class="dropdown-toggle{% if item.highlighted %} formation-navlink{% endif %}" aria-expanded="false" data-action="menu#toggleDropdown">
               {{ item.label }} {{ icon('chevron-down') }}
             </button>
             <ul class="dropdown-menu">
@@ -82,7 +88,7 @@
             {% else %}
               {% set url = menu_url(item) %}
               {% if url %}
-          <li><a href="{{ url }}"{% if url == current_path %} aria-current="page"{% endif %}{% if item.highlighted %} class="formation-navlink"{% endif %}>{{ item.label }}</a></li>
+          <li><a href="{{ url }}"{% if url == current_path %} aria-current="page"{% endif %}{% if item.highlighted %} class="formation-navlink"{% endif %} data-action="menu#close">{{ item.label }}</a></li>
               {% endif %}
             {% endif %}
           {% endfor %}
@@ -125,7 +131,7 @@
 
       {% if show_qualiopi() %}
       <div class="footer-item footer-qualiopi">
-        <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200" height="107">
+        <img src="{{ asset('images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200" height="107">
       </div>
       {% endif %}
 
@@ -141,10 +147,8 @@
       Copyright &copy; 2020-{{ 'now'|date('Y') }} — <a href="https://sylvainpillet.com">S. Pillet</a>
       <span class="footer-sep">|</span><a href="{{ path('app_neuropsychologue_gap') }}">Neuropsychologue près de Gap</a>
       <span class="footer-sep">|</span><a href="{{ path('app_mentions_legales') }}">Mentions légales</a>
-      <span class="footer-sep">|</span><a href="{{ asset('assets/documents/CONDITIONS_GENERALES_DE_VENTE.pdf') }}" target="_blank" rel="noopener">CGV<span class="visually-hidden"> (PDF, nouvel onglet)</span></a>
+      <span class="footer-sep">|</span><a href="{{ asset('documents/CONDITIONS_GENERALES_DE_VENTE.pdf') }}" target="_blank" rel="noopener">CGV<span class="visually-hidden"> (PDF, nouvel onglet)</span></a>
     </p>
   </footer>
-
-  <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 </html>

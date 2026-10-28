@@ -2,10 +2,10 @@
   "name": "psy-tcc",
   "private": true,
   "version": "1.0.0",
-  "description": "Compilation SCSS -> CSS pour le site (pas de bundler front, assets servis tels quels par Symfony).",
+  "description": "Compilation SCSS -> CSS (le CSS compilé est ensuite versionné et servi par AssetMapper).",
   "scripts": {
-    "sass:build": "sass public/assets/css/style.scss:public/assets/css/style.css --no-source-map --style=compressed",
-    "sass:watch": "sass --watch public/assets/css/style.scss:public/assets/css/style.css"
+    "sass:build": "sass assets/styles/style.scss:assets/styles/style.css --no-source-map --style=compressed",
+    "sass:watch": "sass --watch assets/styles/style.scss:assets/styles/style.css"
   },
   "devDependencies": {
     "sass": "^1.104.0"

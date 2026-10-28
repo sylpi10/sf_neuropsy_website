@@ -6,11 +6,12 @@ use App\Entity\OpeningDay;
 use App\Entity\SchedulePeriod;
 use App\Repository\OpeningDayRepository;
 use App\Repository\SchedulePeriodRepository;
+use Symfony\Contracts\Service\ResetInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class ScheduleExtension extends AbstractExtension
+class ScheduleExtension extends AbstractExtension implements ResetInterface
 {
     // Une période est annoncée sur le site à partir de N jours avant son début
     private const ANNOUNCE_DAYS_AHEAD = 45;
@@ -91,5 +92,12 @@ class ScheduleExtension extends AbstractExtension
         $last = array_pop($items);
 
         return $items ? implode(', ', $items) . ' et ' . $last : (string) $last;
+    }
+
+    // Caches de la requête en cours : vidés entre deux requêtes si PHP reste en mémoire (FrankenPHP en mode worker)
+    public function reset(): void
+    {
+        $this->openDays = null;
+        $this->periods = null;
     }
 }

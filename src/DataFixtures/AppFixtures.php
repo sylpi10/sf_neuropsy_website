@@ -120,7 +120,7 @@ class AppFixtures extends Fixture
         ];
 
         $projectDir = dirname(__DIR__, 2);
-        $assetsDir = $projectDir . "/public/assets/documents/";
+        $assetsDir = $projectDir . "/public/documents/";
         $uploadDir = $projectDir . "/public/uploads/formations/";
 
         if (!is_dir($uploadDir)) {

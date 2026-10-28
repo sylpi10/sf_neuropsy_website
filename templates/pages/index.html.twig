@@ -5,7 +5,7 @@
     {% set first = slides|first %}
     {% set first_img = asset('uploads/slides/' ~ first.imageName) %}
     {% set first_img_mobile = first.mobileImageName ? asset('uploads/slides/' ~ first.mobileImageName) : first_img %}
-    {# Slide 1 = candidate LCP : préchargée et posée en CSS ; les suivantes sont chargées en différé par main.js #}
+    {# Slide 1 = candidate LCP : préchargée et posée en CSS ; les suivantes sont chargées en différé par hero_controller.js #}
     {% if first.mobileImageName %}
       <link rel="preload" as="image" href="{{ first_img_mobile }}" media="(max-width: 768px)" fetchpriority="high">
       <link rel="preload" as="image" href="{{ first_img }}" media="(min-width: 769px)" fetchpriority="high">
@@ -21,12 +21,12 @@
 
 {% block body %}
 {% if slides is not empty %}
-<section class="hero-slider" aria-roledescription="carrousel" aria-label="Présentation du cabinet">
+<section class="hero-slider" aria-roledescription="carrousel" aria-label="Présentation du cabinet" data-controller="hero">
   {% for slide in slides %}
     {% if loop.first %}
-  <div class="hero-slide hero-slide--first is-active">
+  <div class="hero-slide hero-slide--first is-active" data-hero-target="slide">
     {% else %}
-  <div class="hero-slide" data-bg="{{ asset('uploads/slides/' ~ slide.imageName) }}"{% if slide.mobileImageName %} data-bg-mobile="{{ asset('uploads/slides/' ~ slide.mobileImageName) }}"{% endif %}>
+  <div class="hero-slide" data-hero-target="slide" data-bg="{{ asset('uploads/slides/' ~ slide.imageName) }}"{% if slide.mobileImageName %} data-bg-mobile="{{ asset('uploads/slides/' ~ slide.mobileImageName) }}"{% endif %}>
     {% endif %}
     <div class="hero-caption">
       {% if loop.first %}
@@ -42,9 +42,9 @@
   {% endfor %}
   {% if slides|length > 1 %}
   <div class="hero-dots">
-    <button class="hero-pause" type="button" aria-label="Mettre le défilement en pause"></button>
+    <button class="hero-pause" type="button" aria-label="Mettre le défilement en pause" data-hero-target="pause" data-action="hero#togglePause"></button>
     {% for slide in slides %}
-    <button class="hero-dot{% if loop.first %} is-active{% endif %}" type="button" aria-label="Diapositive {{ loop.index }}"{% if loop.first %} aria-current="true"{% endif %}></button>
+    <button class="hero-dot{% if loop.first %} is-active{% endif %}" type="button" aria-label="Diapositive {{ loop.index }}" data-hero-target="dot" data-action="hero#show" data-hero-index-param="{{ loop.index0 }}"{% if loop.first %} aria-current="true"{% endif %}></button>
     {% endfor %}
   </div>
   {% endif %}
@@ -82,7 +82,7 @@
   <div class="home-highlight-card">
     <h2>Organisme de formation <span>« Psycho-Parent-Alp »</span></h2>
     {% if show_qualiopi() %}
-    <img src="{{ asset('assets/images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200">
+    <img src="{{ asset('images/qualiopi.webp') }}" alt="Logo certification Qualiopi" width="200">
     {% endif %}
     <a class="btn btn-primary" href="{{ path('app_organisme_de_formation') }}">Découvrir les formations</a>
   </div>

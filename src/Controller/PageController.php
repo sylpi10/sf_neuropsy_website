@@ -162,4 +162,15 @@ class PageController extends AbstractController
             ),
         ]);
     }
+
+    // Anciennes URL des PDF (avant AssetMapper, /assets/ est maintenant réservé aux fichiers versionnés)
+    #[Route(
+        "/assets/documents/{file}",
+        name: "app_legacy_document",
+        requirements: ["file" => "[^/]+\\.pdf"],
+    )]
+    public function legacyDocument(string $file): Response
+    {
+        return $this->redirect("/documents/" . rawurlencode($file), Response::HTTP_MOVED_PERMANENTLY);
+    }
 }

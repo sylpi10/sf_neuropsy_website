@@ -1,0 +1,44 @@
+/* Navigation Turbo (assets/app.js) : barre de chargement et transitions entre les pages (View Transitions API).
+   Navigateurs sans View Transitions : la page change simplement, sans animation. */
+
+// Barre de chargement de Turbo (affichée si la page met plus de 500 ms à arriver)
+.turbo-progress-bar {
+    height: 3px;
+    background: var(--terracotta-500);
+}
+
+// Le header ne fait pas partie du fondu : il reste en place pendant la transition
+.site-header {
+    view-transition-name: site-header;
+}
+
+::view-transition-old(root) {
+    animation: page-out 180ms ease-in both;
+}
+
+::view-transition-new(root) {
+    animation: page-in 320ms ease-out both;
+}
+
+@keyframes page-out {
+    to {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes page-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+// Moins d'animations demandé par l'utilisateur : changement de page immédiat
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}

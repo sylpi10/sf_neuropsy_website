@@ -1,0 +1,15 @@
+framework:
+    asset_mapper:
+        # The paths to make available to the asset mapper.
+        paths:
+            - assets/
+        # Sources SCSS : seul le CSS compilé (npm run sass:build) est publié
+        excluded_patterns:
+            - '*/assets/styles/*.scss'
+            - '*/assets/styles/**/*.scss'
+        missing_import_mode: strict
+
+when@prod:
+    framework:
+        asset_mapper:
+            missing_import_mode: warn
